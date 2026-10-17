@@ -387,8 +387,6 @@ const expandBank=(topic,base)=>{
  for(let round=0;arr.length<105;round++){
   for(let i=0;i<list.length&&arr.length<105;i++){
    const s=list[i],n=round*list.length+i+1;
-   const q=`${s[0]} (${n}번째 사례): ${labels[round%labels.length]}`;
-   if(!arr.some(x=>x.q===q)){
     arr.push({q,a:[s[1],s[2]],c:0,e:`${s[1]}가 더 적절하다. ${topic}에서는 근거와 상황을 확인하고 신중하게 판단해야 한다.`});
    }
   }
