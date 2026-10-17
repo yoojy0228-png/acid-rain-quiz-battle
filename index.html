@@ -395,7 +395,6 @@ const expandBank=(topic,base)=>{
  }
  return arr;
 };
-for(const topic of Object.keys(BANK)) BANK[topic]=expandBank(topic,BANK[topic]);
 
 const $=id=>document.getElementById(id);
 const buttons=[$("opt0"),$("opt1")];
