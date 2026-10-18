@@ -1,0 +1,29 @@
+/* ACID RAIN original visual upgrade: locally bundled, no external asset requests */
+body{background-image:radial-gradient(ellipse at 50% -10%,#274963 0,#101d31 42%,#070d18 100%);background-attachment:fixed;position:relative;isolation:isolate}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:url("rain-grid.svg") repeat;opacity:.55;animation:gridDrift 24s linear infinite}
+header{position:relative}
+.logo{display:flex;align-items:center;gap:10px;text-shadow:0 0 18px #56ffe044}
+.logo:before{content:"";display:inline-block;width:34px;height:34px;flex:none;background:url("acid-mark.svg") center/contain no-repeat;filter:drop-shadow(0 0 8px #56ffe066)}
+.logo small{line-height:1.4}
+#soundToggle{border:1px solid #3c5a6b;background:#0d1a2b;color:var(--cyan);border-radius:8px;padding:8px 10px;font-size:11px}
+.primary{box-shadow:0 0 22px #56ffe02c;transition:transform .15s,box-shadow .15s,filter .15s}
+.primary:hover{transform:translateY(-2px);box-shadow:0 0 30px #56ffe055;filter:brightness(1.08)}
+.secondary,.choice{transition:border-color .15s,background .15s,transform .15s}
+.secondary:hover,.choice:hover{border-color:#56ffe0;transform:translateY(-1px)}
+.panel,.stat,.bcard,.rule,.result,.review{box-shadow:0 8px 28px #00000020}
+.arena{background-image:linear-gradient(180deg,#14253ae8,#09111ef5 82%,#211525f5),url("rain-grid.svg");background-size:auto,280px 280px}
+.arena:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.0;background:url("lightning.svg") 50% 0/120px 160px no-repeat;mix-blend-mode:screen}
+.arena.flash:after{animation:lightningFlash .35s ease-out}
+.answer{transition:top .05s linear,box-shadow .15s,filter .15s}
+.answer:not(:disabled):hover{filter:brightness(1.2);box-shadow:0 0 25px #56ffe044}
+.answer .rain-tail{animation:rainPulse .7s ease-in-out infinite alternate}
+.answer.pink .rain-tail{animation-delay:.3s}
+.topic{box-shadow:0 0 16px #56ffe01a}
+.progress{box-shadow:inset 0 0 8px #000}
+#progressFill{box-shadow:0 0 10px #56ffe0;transition:width .06s linear}
+.feedback{font-weight:700;text-shadow:0 0 12px #56ffe022}
+.stat strong{font-variant-numeric:tabular-nums;text-shadow:0 0 14px #56ffe022}
+@keyframes gridDrift{from{background-position:0 0}to{background-position:420px 420px}}
+@keyframes rainPulse{from{opacity:.35;transform:scaleY(.7);transform-origin:top}to{opacity:1;transform:scaleY(1);transform-origin:top}}
+@keyframes lightningFlash{0%{opacity:0}12%{opacity:.9}28%{opacity:.08}42%{opacity:.6}100%{opacity:0}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
