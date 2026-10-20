@@ -5,61 +5,61 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ACID RAIN - Quiz Battle</title>
 <style>
-:root{--bg:#09101e;--panel:#131f33;--line:#30445f;--cyan:#56ffe0;--pink:#ff578d;--yellow:#ffe68a}
+:root{--bg:#f2f7ff;--panel:#ffffff;--line:#c9d8ee;--cyan:#00a99a;--pink:#e84f91;--yellow:#b87900}
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(ellipse at top,#203751,#09101e 70%);color:#edf5ff;font-family:Arial,"Malgun Gothic",sans-serif}
+body{margin:0;background:radial-gradient(ellipse at top,#ffffff,#e8f2ff 70%);color:#20324b;font-family:Arial,"Malgun Gothic",sans-serif}
 button{font:inherit;cursor:pointer}button:disabled{cursor:default}
 .app{max-width:900px;margin:auto;padding:16px}
 header{display:flex;justify-content:space-between;align-items:center;padding:12px 0 20px;border-bottom:1px solid var(--line)}
 .logo{font-size:22px;font-weight:900;letter-spacing:3px;color:var(--cyan)}
-.logo small{display:block;font-size:9px;color:#92a4bd;letter-spacing:2px;margin-top:5px}
+.logo small{display:block;font-size:9px;color:#617895;letter-spacing:2px;margin-top:5px}
 .screen{display:none}.screen.active{display:block}
 h1{font-size:clamp(28px,6vw,44px);line-height:1.35}h2{font-size:20px}
-.muted{font-size:13px;color:#9eafc6;line-height:1.8}
+.muted{font-size:13px;color:#647994;line-height:1.8}
 .panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;margin:18px 0}
 .setup{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.label{display:block;color:#9eafc6;font-size:12px;margin-bottom:10px}
+.label{display:block;color:#647994;font-size:12px;margin-bottom:10px}
 .choices{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.choices.two{grid-template-columns:repeat(2,1fr)}
-.choice{padding:12px 5px;border-radius:9px;border:1px solid var(--line);background:#0b1525;color:#edf5ff;font-size:12px}
-.choice.selected{border-color:var(--cyan);background:#10342f;color:var(--cyan)}
-.primary{padding:14px 20px;background:var(--cyan);border:0;border-radius:9px;color:#08151a;font-weight:900}
-.secondary{padding:11px 15px;background:#18263b;color:#edf5ff;border:1px solid var(--line);border-radius:9px}
+.choice{padding:12px 5px;border-radius:9px;border:1px solid var(--line);background:#edf4ff;color:#20324b;font-size:12px}
+.choice.selected{border-color:var(--cyan);background:#d8f8f0;color:#007f73}
+.primary{padding:14px 20px;background:var(--cyan);border:0;border-radius:9px;color:#ffffff;font-weight:900}
+.secondary{padding:11px 15px;background:#e7effb;color:#20324b;border:1px solid var(--line);border-radius:9px}
 .row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.rule{padding:13px;border:1px solid var(--line);border-radius:10px;background:#111b2c}
-.rule b{display:block;color:var(--yellow);font-size:13px;margin-bottom:7px}.rule span{font-size:12px;color:#9eafc6;line-height:1.6}
+.rule{padding:13px;border:1px solid var(--line);border-radius:10px;background:#f5f8ff}
+.rule b{display:block;color:var(--yellow);font-size:13px;margin-bottom:7px}.rule span{font-size:12px;color:#647994;line-height:1.6}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0 12px}
 .stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px}
-.stat span{display:block;font-size:11px;color:#9eafc6;margin-bottom:7px}.stat strong{font-size:20px}
+.stat span{display:block;font-size:11px;color:#647994;margin-bottom:7px}.stat strong{font-size:20px}
 .battle{display:none;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}.battle.show{display:grid}
 .bcard{padding:12px;background:var(--panel);border:1px solid var(--line);border-radius:10px;font-size:12px}.bcard strong{float:right;color:var(--cyan);font-size:17px}.bcard.ai strong{color:var(--pink)}
-.arena{height:475px;position:relative;overflow:hidden;border:1px solid #3b5069;border-radius:14px;background:linear-gradient(#14253a,#09111e 85%,#211525)}
+.arena{height:475px;position:relative;overflow:hidden;border:1px solid #b9cce6;border-radius:14px;background:linear-gradient(#f8fcff,#eaf3ff 85%,#fff0f7)}
 .arena:before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(#34486035 1px,transparent 1px),linear-gradient(90deg,#34486035 1px,transparent 1px);background-size:28px 28px}
 .question-area{position:absolute;top:16px;left:12px;right:12px;text-align:center;z-index:2}
 .topic{display:inline-block;color:var(--cyan);border:1px solid #315e62;border-radius:20px;padding:6px 10px;font-size:10px;letter-spacing:2px}
 #question{font-size:clamp(16px,3.5vw,23px);font-weight:bold;line-height:1.5;margin:12px auto 8px;max-width:750px}
-#subquestion{font-size:11px;color:#9eafc6}
+#subquestion{font-size:11px;color:#647994}
 .lanes{position:absolute;top:155px;bottom:24px;left:0;right:0;display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 12px}
 .lane{position:relative;min-width:0;border-left:1px dashed #52617b55;border-right:1px dashed #52617b55}
-.lane-label{text-align:center;color:#9eafc6;font-size:10px}
-.answer{position:absolute;top:30px;left:4%;width:92%;min-height:84px;padding:14px 7px;display:flex;align-items:center;justify-content:center;color:white;background:#102c37;border:1px solid var(--cyan);border-radius:11px;box-shadow:0 0 18px #56ffe01c}
-.answer.pink{background:#30182c;border-color:var(--pink);box-shadow:0 0 18px #ff578d20}
+.lane-label{text-align:center;color:#647994;font-size:10px}
+.answer{position:absolute;top:30px;left:4%;width:92%;min-height:84px;padding:14px 7px;display:flex;align-items:center;justify-content:center;color:#17354a;background:#d9f7f4;border:1px solid var(--cyan);border-radius:11px;box-shadow:0 0 18px #00a99a25}
+.answer.pink{background:#ffe3ef;border-color:var(--pink);box-shadow:0 0 18px #e84f9125}
 .answer .txt{font-size:clamp(12px,2vw,15px);font-weight:bold;line-height:1.5;overflow-wrap:anywhere}
 .key{position:absolute;top:5px;left:7px;font-size:10px;color:var(--cyan)}.pink .key{color:var(--pink)}
 .rain-tail{position:absolute;top:-48px;left:50%;height:43px;width:3px;background:linear-gradient(transparent,var(--cyan));box-shadow:0 0 8px var(--cyan);pointer-events:none}
 .pink .rain-tail{background:linear-gradient(transparent,var(--pink));box-shadow:0 0 8px var(--pink)}
 .floor{position:absolute;bottom:0;left:0;right:0;height:5px;background:var(--pink);box-shadow:0 0 17px var(--pink)}
-.progress{height:4px;background:#1a2940;margin-top:12px;border-radius:5px;overflow:hidden}#progressFill{height:100%;width:0;background:var(--cyan)}
+.progress{height:4px;background:#d8e4f5;margin-top:12px;border-radius:5px;overflow:hidden}#progressFill{height:100%;width:0;background:var(--cyan)}
 .feedback{text-align:center;min-height:38px;padding:10px 0;font-size:13px;color:var(--yellow)}
 .controls{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
 .results{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0}
-.result{padding:12px 8px;background:#0c1627;border:1px solid var(--line);border-radius:10px}
-.result span{display:block;font-size:11px;color:#9eafc6;margin-bottom:8px}.result strong{font-size:20px;color:var(--cyan)}
-.review-list{display:grid;gap:10px}.review{background:#0c1627;border:1px solid var(--line);border-radius:10px;padding:14px}
+.result{padding:12px 8px;background:#f4f8ff;border:1px solid var(--line);border-radius:10px}
+.result span{display:block;font-size:11px;color:#647994;margin-bottom:8px}.result strong{font-size:20px;color:var(--cyan)}
+.review-list{display:grid;gap:10px}.review{background:#f4f8ff;border:1px solid var(--line);border-radius:10px;padding:14px}
 .review h3{font-size:14px;line-height:1.6}.review p{font-size:13px;line-height:1.7;overflow-wrap:anywhere}
-.wrong{color:var(--pink)}.correct{color:var(--cyan)}.explain{border-top:1px solid var(--line);padding-top:8px;color:#c3d0e3}
-.empty{text-align:center;padding:20px;color:#9eafc6}
-footer{text-align:center;padding:25px 0 8px;color:#63748c;font-size:10px}
+.wrong{color:var(--pink)}.correct{color:var(--cyan)}.explain{border-top:1px solid var(--line);padding-top:8px;color:#526780}
+.empty{text-align:center;padding:20px;color:#647994}
+footer{text-align:center;padding:25px 0 8px;color:#7386a0;font-size:10px}
 @media(max-width:600px){.setup{grid-template-columns:1fr}.panel{padding:15px}.rules{grid-template-columns:1fr}.rule{padding:10px 12px}.arena{height:460px}.lanes{padding:0 6px;gap:6px}.answer{left:2%;width:96%;padding:13px 4px}.stats{gap:5px}.stat{padding:10px 6px}.stat strong{font-size:16px}.results{gap:5px}.result{padding:10px 5px}.result strong{font-size:17px}}
 </style>
   <link rel="stylesheet" href="assets/enhancements.css">
@@ -80,7 +80,7 @@ footer{text-align:center;padding:25px 0 8px;color:#63748c;font-size:10px}
 </section>
 <section id="game" class="screen">
 <div class="stats"><div class="stat"><span>STAGE</span><strong id="stage">01</strong></div><div class="stat"><span id="healthLabel">HEALTH</span><strong id="hearts" style="color:var(--pink)">♥ ♥ ♥</strong></div><div class="stat"><span>MY SCORE</span><strong id="score">0</strong></div></div>
-<div id="battle" class="battle"><div class="bcard">YOU <strong id="youScore">0</strong><div style="color:#9eafc6;margin-top:8px">목표: 100점</div></div><div class="bcard ai">AI <strong id="cpuScore">0</strong><div style="color:#9eafc6;margin-top:8px">목표: 100점</div></div></div>
+<div id="battle" class="battle"><div class="bcard">YOU <strong id="youScore">0</strong><div style="color:#647994;margin-top:8px">목표: 100점</div></div><div class="bcard ai">AI <strong id="cpuScore">0</strong><div style="color:#647994;margin-top:8px">목표: 100점</div></div></div>
 <div class="arena"><div class="question-area"><span class="topic" id="topicName">문해력</span><div id="question">문제</div><div id="subquestion">정답을 선택하세요!</div></div>
 <div class="lanes"><div class="lane"><div class="lane-label">OPTION 01 · KEY 1</div><button class="answer" id="opt0"><span class="rain-tail"></span><span class="key">1 / A</span><span class="txt"></span></button></div><div class="lane"><div class="lane-label">OPTION 02 · KEY 2</div><button class="answer pink" id="opt1"><span class="rain-tail"></span><span class="key">2 / L</span><span class="txt"></span></button></div></div><div class="floor" id="floor"></div></div>
 <div class="progress"><div id="progressFill"></div></div><div class="feedback" id="feedback" aria-live="polite">시작!</div><div class="controls"><span class="muted" style="font-size:11px">1/A 왼쪽 · 2/L 오른쪽</span><button class="secondary" id="quit">게임 종료</button></div>
