@@ -303,6 +303,9 @@ header .row span{font-size:16px !important}
 .territory-board-legend{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;font-size:12px;color:#62718a;margin-top:10px}
 .territory-board-legend span{display:flex;align-items:center;gap:5px}.territory-board-legend i{display:inline-block;width:9px;height:9px;border-radius:50%}
 @media(max-width:760px){.territory-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.territory-ai-questions{grid-template-columns:1fr 1fr;gap:6px}.territory-layout{grid-template-columns:1fr}.territory-board-wrap{order:2}.territory-player-question{order:1}.territory-question h2{min-height:unset;font-size:clamp(21px,5vw,28px)}.territory-question,.territory-board-wrap{padding:12px}}
+
+.rules-voice-toggle{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--text,#dce8ff);margin-right:12px;cursor:pointer}
+.rules-voice-toggle input{accent-color:var(--cyan,#00a99a);width:16px;height:16px}
 </style>
   <link rel="stylesheet" href="assets/enhancements.css">
 </head>
@@ -831,16 +834,44 @@ function rulesMarkup(topic){
  <div class="poster-section">게임 목표</div><p class="poster-rule">자료를 읽고 진짜인지 가짜인지 판별해 선을 이어 보세요.</p>
  <div class="poster-section">진행 방법</div><p class="poster-rule">1. 내 차례에 게임판의 빈 선 하나를 선택합니다.</p><p class="poster-note">2. 자료를 읽고 <b>1️⃣ 진짜</b> 또는 <b>2️⃣ 가짜</b>를 선택합니다.</p><p class="poster-note">3. 정답이면 선이 연결되고, 오답이면 -1점이 됩니다. 차례는 유지됩니다.</p><p class="poster-note">4. 네 변을 모두 연결해 칸을 완성하면 그 칸을 차지하고 한 번 더 진행합니다.</p><p class="poster-note">5. 게임이 끝났을 때 가장 많은 칸을 차지한 플레이어가 승리합니다.</p>
  <div class="poster-section">조작 방법</div><p class="poster-note">마우스로 선과 답을 선택하거나 키보드 1(진짜), 2(가짜)를 누르세요.</p>
- <div class="poster-actions"><button id="closeRules" class="primary" type="button">확인하고 ${pendingGameStart?'게임 시작':'닫기'}</button></div>`;
+ <div class="poster-actions"><label class="rules-voice-toggle"><input id="rulesVoiceEnabled" type="checkbox"> 🔊 규칙 읽어주기</label><button id="closeRules" class="primary" type="button">확인하고 ${pendingGameStart?'게임 시작':'닫기'}</button></div>`;
  return `<div id="posterTitle" class="poster-title">ACID RAIN · ${topic} 게임 방법</div>
  <div class="poster-section">게임 목표</div><p class="poster-rule">위에서 내려오는 두 선택지 중 정답을 골라 살아남으세요.</p>
  <div class="poster-section">진행 방법</div><p class="poster-rule">1. 선택지가 바닥에 닿기 전에 정답을 선택합니다.</p><p class="poster-note">2. 싱글 모드는 생명 3개로 시작하며, 오답이나 시간 초과 시 생명이 줄어듭니다.</p><p class="poster-note">3. AI 대전은 먼저 100점 이상을 달성하면 승리합니다. 정답은 +10점, 오답이나 시간 초과는 -10점입니다.</p><p class="poster-note">4. 진행할수록 판단 시간이 짧아집니다.</p>
  <div class="poster-section">조작 방법</div><p class="poster-note">마우스로 선택지를 누르거나 키보드 1/A(왼쪽), 2/L(오른쪽)를 누르세요.</p>
- <div class="poster-actions"><button id="closeRules" class="primary" type="button">확인하고 ${pendingGameStart?'게임 시작':'닫기'}</button></div>`;
+ <div class="poster-actions"><label class="rules-voice-toggle"><input id="rulesVoiceEnabled" type="checkbox"> 🔊 규칙 읽어주기</label><button id="closeRules" class="primary" type="button">확인하고 ${pendingGameStart?'게임 시작':'닫기'}</button></div>`;
 }
-function openRules(){pendingGameStart=false;$("rulesOverlay").querySelector('.rules-poster').innerHTML=rulesMarkup(settings.topic);$("rulesOverlay").hidden=false;$("closeRules").addEventListener('click',closeRules,{once:true});}
-function startGame(){pendingGameStart=true;$("rulesOverlay").querySelector('.rules-poster').innerHTML=rulesMarkup(settings.topic);$("rulesOverlay").hidden=false;$("closeRules").addEventListener('click',closeRules,{once:true});}
-function closeRules(){const launch=pendingGameStart;pendingGameStart=false;$("rulesOverlay").hidden=true;if(launch)launchGame();}
+let rulesSpeechEnabled=false;
+function stopRulesSpeech(){if("speechSynthesis" in window)window.speechSynthesis.cancel();}
+function bindRulesVoice(){
+ const toggle=$("rulesVoiceEnabled");
+ if(!toggle)return;
+ toggle.checked=false;
+ toggle.addEventListener("change",()=>{
+  rulesSpeechEnabled=toggle.checked;
+  if(!rulesSpeechEnabled){stopRulesSpeech();return;}
+  if(!("speechSynthesis" in window)){toggle.checked=false;rulesSpeechEnabled=false;alert("이 브라우저에서는 음성 읽어주기를 지원하지 않습니다.");return;}
+  stopRulesSpeech();
+  const poster=$("rulesOverlay").querySelector(".rules-poster");
+  const clone=poster.cloneNode(true);
+  clone.querySelectorAll(".poster-actions,button,label,input").forEach(el=>el.remove());
+  const text=clone.innerText.replace(/\s+/g," ").trim();
+  if(!text)return;
+  const utterance=new SpeechSynthesisUtterance(text);
+  utterance.lang="ko-KR";
+  utterance.rate=1;
+  window.speechSynthesis.speak(utterance);
+ });
+}
+function showRules(){
+ stopRulesSpeech();rulesSpeechEnabled=false;
+ $("rulesOverlay").querySelector('.rules-poster').innerHTML=rulesMarkup(settings.topic);
+ $("rulesOverlay").hidden=false;bindRulesVoice();
+ $("closeRules").addEventListener('click',closeRules,{once:true});
+}
+function openRules(){pendingGameStart=false;showRules();}
+function startGame(){pendingGameStart=true;showRules();}
+function closeRules(){const launch=pendingGameStart;pendingGameStart=false;stopRulesSpeech();rulesSpeechEnabled=false;$("rulesOverlay").hidden=true;if(launch)launchGame();}
 $("openRules").addEventListener("click",openRules);
 $("rulesOverlay").addEventListener("click",e=>{if(e.target===$("rulesOverlay"))closeRules();});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("rulesOverlay").hidden)closeRules();});
