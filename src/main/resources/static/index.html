@@ -16,9 +16,12 @@ header{display:flex;justify-content:space-between;align-items:center;padding:12p
 .screen{display:none}.screen.active{display:block}
 /* 시작 시 표시되는 규칙 안내 포스터 */
 .rules-overlay{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(10,14,20,.88)}
-.rules-overlay[hidden]{display:none}.rules-poster{position:relative;width:min(760px,100%);max-height:92vh;overflow:auto;background:#101214;color:#f5f5f5;border:3px double #e5e5e5;outline:1px solid #777;outline-offset:-10px;padding:clamp(24px,5vw,48px);box-shadow:0 18px 60px #0008}
-.poster-title{text-align:center;border:2px solid #ddd;background:#e8e8e8;color:#101010;padding:12px 8px;margin:8px auto 26px;font-size:clamp(22px,5vw,36px);font-weight:900;letter-spacing:1px}
-.poster-section{color:#cfcfcf;font-size:22px;margin:22px 0 10px}.poster-rule{font-size:clamp(13px,2.5vw,17px);font-weight:700;line-height:1.8;margin:10px 0}.poster-note{font-size:12px;color:#bbb;line-height:1.7;margin:3px 0 12px}.poster-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:28px}.poster-actions button{min-width:135px}
+.rules-overlay[hidden]{display:none}
+.rules-poster{position:relative;width:min(760px,100%);max-height:92vh;overflow:auto;background:#fff;color:#20324b;border:3px double #c9d8ee;outline:1px solid #c9d8ee;outline-offset:-10px;padding:clamp(24px,5vw,48px);box-shadow:0 18px 60px #0008}
+.poster-title{text-align:center;border:2px solid #c9d8ee;background:#edf4ff;color:#20324b;padding:12px 8px;margin:8px auto 26px;font-size:clamp(22px,5vw,36px);font-weight:900;letter-spacing:1px}
+.poster-section{color:#007f73;font-size:22px;margin:22px 0 10px}
+.poster-rule{font-size:clamp(13px,2.5vw,17px);font-weight:700;line-height:1.8;margin:10px 0;color:#20324b}
+.poster-note{font-size:12px;color:#647994;line-height:1.7;margin:3px 0 12px}.poster-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:28px}.poster-actions button{min-width:135px}
 .rules-button{padding:8px 11px;border:1px solid var(--line);border-radius:8px;background:#e7effb;color:#20324b;font-weight:700}
 h1{font-size:clamp(28px,6vw,44px);line-height:1.35}h2{font-size:20px}
 .muted{font-size:13px;color:#647994;line-height:1.8}
@@ -67,22 +70,255 @@ h1{font-size:clamp(28px,6vw,44px);line-height:1.35}h2{font-size:20px}
 .empty{text-align:center;padding:20px;color:#647994}
 footer{text-align:center;padding:25px 0 8px;color:#7386a0;font-size:10px}
 @media(max-width:600px){.setup{grid-template-columns:1fr}.panel{padding:15px}.rules{grid-template-columns:1fr}.rule{padding:10px 12px}.arena{height:460px}.lanes{padding:0 6px;gap:6px}.answer{left:2%;width:96%;padding:13px 4px}.stats{gap:5px}.stat{padding:10px 6px}.stat strong{font-size:16px}.results{gap:5px}.result{padding:10px 5px}.result strong{font-size:17px}}
+
+/* 전체 글씨 크기 확대: 게임 기능과 배치는 유지 */
+body{font-size:18px}
+.logo{font-size:27px}
+.logo small{font-size:12px}
+.poster-title{font-size:clamp(28px,5.5vw,42px)}
+.poster-section{font-size:28px}
+.poster-rule{font-size:clamp(17px,3vw,22px)}
+.poster-note{font-size:15px}
+.rules-button{font-size:16px}
+h2{font-size:25px}
+.muted{font-size:16px}
+.label{font-size:15px}
+.choice{font-size:16px}
+.primary,.secondary{font-size:17px}
+.rule b{font-size:16px}
+.rule span{font-size:15px}
+.stat span{font-size:14px}
+.stat strong{font-size:25px}
+.bcard{font-size:15px}
+.bcard strong{font-size:21px}
+.topic{font-size:13px}
+#question{font-size:clamp(20px,4vw,28px)}
+#subquestion{font-size:15px}
+.lane-label{font-size:13px}
+.answer .txt{font-size:clamp(16px,2.5vw,20px)}
+.key{font-size:13px}
+.feedback{font-size:16px}
+.result span{font-size:14px}
+.result strong{font-size:25px}
+.review h3{font-size:18px}
+.review p{font-size:16px}
+.empty{font-size:16px}
+footer{font-size:12px}
+header .row span{font-size:14px !important}
+#home>p[style],#result>p[style]{font-size:14px !important}
+.controls .muted,.app .row .muted{font-size:14px !important}
+@media(max-width:600px){
+  .logo{font-size:24px}
+  .logo small{font-size:11px}
+  h2{font-size:23px}
+  .choice{font-size:15px}
+  .stat span{font-size:13px}
+  .stat strong{font-size:20px}
+  .result span{font-size:13px}
+  .result strong{font-size:20px}
+  .answer .txt{font-size:clamp(15px,3.5vw,18px)}
+}
+
+
+/* 글씨 크기 추가 확대 */
+body{font-size:20px}
+.logo{font-size:29px}
+.logo small{font-size:13px}
+.poster-title{font-size:clamp(30px,5.8vw,44px)}
+.poster-section{font-size:30px}
+.poster-rule{font-size:clamp(19px,3.2vw,24px)}
+.poster-note{font-size:17px}
+.rules-button{font-size:18px}
+h2{font-size:27px}
+.muted{font-size:18px}
+.label{font-size:17px}
+.choice{font-size:18px}
+.primary,.secondary{font-size:19px}
+.rule b{font-size:18px}
+.rule span{font-size:17px}
+.stat span{font-size:16px}
+.stat strong{font-size:27px}
+.bcard{font-size:17px}
+.bcard strong{font-size:23px}
+.topic{font-size:15px}
+#question{font-size:clamp(22px,4.2vw,30px)}
+#subquestion{font-size:17px}
+.lane-label{font-size:15px}
+.answer .txt{font-size:clamp(18px,2.7vw,22px)}
+.key{font-size:15px}
+.feedback{font-size:18px}
+.result span{font-size:16px}
+.result strong{font-size:27px}
+.review h3{font-size:20px}
+.review p{font-size:18px}
+.empty{font-size:18px}
+footer{font-size:14px}
+header .row span{font-size:16px !important}
+#home>p[style],#result>p[style]{font-size:16px !important}
+.controls .muted,.app .row .muted{font-size:16px !important}
+@media(max-width:600px){
+  .logo{font-size:26px}
+  .logo small{font-size:12px}
+  h2{font-size:25px}
+  .choice{font-size:17px}
+  .stat span{font-size:14px}
+  .stat strong{font-size:22px}
+  .result span{font-size:14px}
+  .result strong{font-size:22px}
+  .answer .txt{font-size:clamp(17px,3.7vw,20px)}
+}
+
+
+/* 게임 안에서 글씨 크기 조절 */
+#fontSizeControl{
+  position:fixed;right:16px;bottom:16px;z-index:10001;
+  display:flex;align-items:center;gap:7px;flex-wrap:wrap;
+  max-width:calc(100vw - 24px);padding:10px 12px;
+  border:1px solid rgba(100,220,255,.42);border-radius:14px;
+  background:rgba(10,18,30,.96);color:#f4f8ff;
+  box-shadow:0 8px 28px rgba(0,0,0,.35);font-size:14px;
+}
+#fontSizeControl .font-size-label{font-weight:700;margin-right:3px}
+#fontSizeControl button{
+  border:1px solid rgba(100,220,255,.5);border-radius:8px;
+  background:#17283b;color:#fff;padding:7px 10px;
+  font-size:15px;font-weight:800;cursor:pointer;min-width:38px;
+}
+#fontSizeControl button:hover{background:#244763}
+#fontSizeControl button:focus-visible{outline:2px solid #68e2ff;outline-offset:2px}
+@media(max-width:600px){
+  #fontSizeControl{right:8px;bottom:8px;gap:5px;padding:7px 8px}
+  #fontSizeControl button{padding:6px 8px}
+}
+
+
+/* 가짜 판별 추리 모드 */
+.case-kicker{color:var(--cyan);letter-spacing:3px;font-size:13px;font-weight:800;margin:8px 0}
+.case-top{display:flex;gap:12px;justify-content:space-between;margin:20px 0}
+.case-top>div{flex:1;background:#111c2a;border:1px solid #29455a;border-radius:14px;padding:14px 18px;display:flex;flex-direction:column;gap:5px}
+.case-top strong{font-size:24px;color:var(--cyan)}
+.case-small{font-size:13px;color:#9db1c9}
+.case-panel{background:linear-gradient(150deg,#101b29,#0d131d);border:1px solid #31506a;border-radius:18px;padding:clamp(18px,3vw,30px);box-shadow:0 12px 34px #0003}
+.case-badge{display:inline-block;background:#173a43;color:#8cecff;border:1px solid #2c6872;border-radius:20px;padding:6px 12px;font-size:13px;font-weight:800}
+.case-panel h2{font-size:clamp(25px,4vw,34px);margin:14px 0 8px}
+.case-story{font-size:19px;line-height:1.7;color:#e5edf7}
+.case-panel h3{font-size:21px;margin:25px 0 8px}
+.case-hint{font-size:15px}
+.evidence-list,.suspect-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
+.evidence-card,.suspect-card{display:flex;gap:10px;align-items:flex-start;text-align:left;background:#172334;color:#edf5ff;border:1px solid #354b64;border-radius:12px;padding:15px;cursor:pointer;font:inherit;line-height:1.55;min-width:0}
+.evidence-card.selected,.suspect-card.selected{border-color:#63e4f6;background:#183744;box-shadow:0 0 0 1px #63e4f6}
+.evidence-card input{margin-top:5px;accent-color:#63e4f6;flex-shrink:0}
+.evidence-card b,.suspect-card b{display:block;font-size:16px;margin-bottom:5px;color:#fff}
+.evidence-card span,.suspect-card span{font-size:15px;color:#c4d1e1}
+.suspect-card{display:block}
+.suspect-card .suspect-role{font-size:13px;color:#90a8c3;display:block;margin-bottom:4px}
+.case-submit{margin-top:20px;width:100%;font-size:18px!important}
+.case-feedback{font-size:17px;line-height:1.7;margin-top:14px;white-space:pre-line}
+.case-feedback.success{color:#86f2c0}.case-feedback.fail{color:#ff9eae}
+.case-controls{display:flex;justify-content:flex-end;margin-top:14px}
+@media(max-width:620px){.evidence-list,.suspect-list{grid-template-columns:1fr}.case-top strong{font-size:20px}.case-story{font-size:17px}.evidence-card,.suspect-card{padding:13px}}
+
+
+/* 자료를 하나씩 열어 자세히 읽는 조사 화면 */
+.evidence-progress{font-size:15px;color:#9fefff;margin:14px 0 4px;font-weight:800}
+.evidence-card{position:relative;display:block;width:100%;min-height:128px;padding:17px 17px 15px 58px}
+.evidence-card:before{content:"📄";position:absolute;left:17px;top:20px;font-size:25px}
+.evidence-card .file-status{display:block;font-size:13px;color:#82d8e8;margin-top:9px;font-weight:800}
+.evidence-card .file-summary{display:block;font-size:14px;color:#8fa6c0;margin-top:7px}
+.evidence-card.read{border-color:#466a7b}
+.evidence-card.read:after{content:"✓ 읽음";position:absolute;right:12px;top:10px;color:#86f2c0;font-size:12px;font-weight:800}
+.evidence-card.marked{border-color:#f2bf72;background:#382d1d}
+.evidence-card.marked .file-status{color:#ffd58c}
+.evidence-workbench{margin-top:20px;padding:15px;border:1px dashed #3d5871;border-radius:12px;background:#0e1926}
+.evidence-mark-chip{display:inline-block;margin:5px 5px 0 0;border:1px solid #98713c;border-radius:8px;background:#302718;color:#ffe0a6;padding:6px 9px;font-size:14px}
+.evidence-modal{position:fixed;inset:0;z-index:10020;background:rgba(3,8,15,.88);display:flex;align-items:center;justify-content:center;padding:16px}
+.evidence-modal[hidden]{display:none}
+.evidence-paper{width:min(760px,100%);max-height:92vh;overflow:auto;background:#f3efe5;color:#1d2937;border-radius:14px;padding:clamp(18px,4vw,34px);box-shadow:0 22px 70px #0009;border:1px solid #d8cfbd}
+.paper-top{display:flex;justify-content:space-between;align-items:center;gap:12px;color:#526275;font-size:13px;font-weight:900;letter-spacing:1px}
+.paper-top .secondary{font-size:14px;padding:8px 12px}
+.paper-counter{margin-top:25px;font-size:14px;color:#7c8998;font-weight:800}
+.evidence-paper h2{font-size:clamp(25px,4vw,34px);line-height:1.3;margin:8px 0 13px;color:#162435}
+.paper-stamp{display:inline-block;border:1px solid #a74d3d;color:#a74d3d;padding:5px 9px;font-size:12px;font-weight:900;letter-spacing:1px;transform:rotate(-1deg);margin-bottom:14px}
+.paper-main{font-size:19px;line-height:1.9;white-space:pre-line;color:#26384b;margin:8px 0 22px}
+.paper-detail-block{border-top:1px solid #d5d0c5;padding:14px 0 4px}
+.paper-detail-block b{font-size:15px;color:#334b62}
+.paper-detail-block p{font-size:16px;line-height:1.7;margin:6px 0 12px;color:#455568;white-space:pre-line}
+.mark-suspicious{display:flex;gap:12px;align-items:flex-start;margin:18px 0;padding:15px;border:1px solid #d0b278;border-radius:10px;background:#fff8e7;cursor:pointer}
+.mark-suspicious input{width:20px;height:20px;margin-top:2px;accent-color:#a86c19;flex-shrink:0}
+.mark-suspicious b{display:block;font-size:16px;color:#563e18}
+.mark-suspicious small{display:block;font-size:13px;line-height:1.5;color:#76664b;margin-top:4px}
+.paper-nav{display:flex;justify-content:space-between;gap:12px;margin-top:20px}
+.paper-nav button{font-size:16px!important}
+@media(max-width:620px){.evidence-card{min-height:110px;padding-left:52px}.evidence-card:before{left:13px}.paper-main{font-size:17px;line-height:1.8}.paper-nav{position:sticky;bottom:0;background:#f3efe5;padding-top:10px}}
+
+
+/* 추리게임 색상만 변경: 흰색 배경과 읽기 쉬운 어두운 글씨 */
+#mystery{background:#ffffff;color:#20324b}
+#mystery .case-top>div{background:#ffffff;border-color:#c9d8ee}
+#mystery .case-small{color:#647994}
+#mystery .case-panel{background:#ffffff;color:#20324b;border-color:#c9d8ee;box-shadow:0 12px 34px #20324b12}
+#mystery .case-badge{background:#edf4ff;color:#20324b;border-color:#c9d8ee}
+#mystery .case-story{color:#20324b}
+#mystery .evidence-card,#mystery .suspect-card{background:#ffffff;color:#20324b;border-color:#c9d8ee}
+#mystery .evidence-card b,#mystery .suspect-card b{color:#20324b}
+#mystery .evidence-card span,#mystery .suspect-card span{color:#526780}
+#mystery .evidence-card.selected,#mystery .suspect-card.selected{border-color:#00a99a;background:#f0fffc;box-shadow:0 0 0 1px #00a99a}
+#mystery .evidence-progress{color:#007f73}
+#mystery .evidence-card .file-status{color:#007f73}
+#mystery .evidence-card .file-summary{color:#647994}
+#mystery .evidence-card.read:after{color:#007f73}
+#mystery .evidence-card.marked{border-color:#b87900;background:#fff8e7}
+#mystery .evidence-card.marked .file-status{color:#805300}
+#mystery .evidence-workbench{background:#f8fbff;border-color:#c9d8ee}
+#mystery .evidence-mark-chip{border-color:#c9a45d;background:#fff8e7;color:#674b18}
+#evidenceModal{background:rgba(255,255,255,.94)}
+
+
+/* 가짜 판별 도트 앤 박스 모드 — 깔끔한 보드와 턴제 UI */
+#territory{background:#f4f7fb;color:#18243a}
+#territory .case-kicker{color:#087f8c!important;letter-spacing:.14em;font-weight:900}
+#territory h1{margin:4px 0 8px}
+#territory .territory-intro{color:#62718a;margin:0 0 16px;line-height:1.55}
+.territory-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:14px 0}
+.territory-player{border:1px solid #dbe3ee;border-radius:13px;padding:11px 12px;background:#fff;display:flex;align-items:center;gap:8px;font-size:14px;min-width:0;box-shadow:0 2px 8px #263c5a08}
+.territory-player strong{margin-left:auto;white-space:nowrap}.territory-player.active-player{border-color:var(--player-color);box-shadow:0 0 0 2px color-mix(in srgb,var(--player-color) 20%,white);background:color-mix(in srgb,var(--player-color) 5%,white)}
+.player-dot{width:12px;height:12px;border-radius:50%;background:var(--player-color);flex-shrink:0}
+.territory-ai-questions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0}
+.territory-ai-card{border:1px solid #dce4ef;border-radius:12px;background:#fff;padding:9px 11px;min-width:0;font-size:12px;color:#52627a}
+.territory-ai-card b{display:flex;justify-content:space-between;gap:8px;font-size:12px;margin-bottom:5px;color:#25354d}.territory-ai-card span{display:block;line-height:1.4;overflow-wrap:anywhere;min-height:32px}
+.territory-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.9fr);gap:16px;align-items:start}
+.territory-player-question{margin:0 0 14px}
+.territory-board-wrap{border:1px solid #dce4ef;border-radius:18px;padding:16px;background:#fff;min-width:0;box-shadow:0 8px 28px #233b5b0b}
+.territory-question{border:1px solid #dce4ef;border-radius:18px;padding:18px;background:#fff;min-width:0;box-shadow:0 8px 28px #233b5b0b}
+.territory-board{width:100%;max-width:560px;margin:auto;aspect-ratio:1/1}
+.territory-layout.four-player{grid-template-columns:minmax(0,1fr)}
+.territory-layout.four-player .territory-board{max-width:760px}
+.territory-layout.four-player .territory-board-wrap{padding:20px}
+.territory-board svg{display:block;width:100%;height:100%;overflow:visible}
+.territory-question h2{font-size:clamp(21px,2.7vw,30px);line-height:1.35;min-height:92px;overflow-wrap:anywhere;margin:12px 0}
+.territory-turn{color:#087f8c;font-weight:900;margin:8px 0}
+.territory-answer-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.territory-answer-row button{font-size:17px;min-height:48px}.territory-answer-row .fake-answer{background:#d94678}
+.territory-board-wrap .muted{font-size:13px;line-height:1.5;margin:12px 2px 0}
+.territory-board-legend{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;font-size:12px;color:#62718a;margin-top:10px}
+.territory-board-legend span{display:flex;align-items:center;gap:5px}.territory-board-legend i{display:inline-block;width:9px;height:9px;border-radius:50%}
+@media(max-width:760px){.territory-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.territory-ai-questions{grid-template-columns:1fr 1fr;gap:6px}.territory-layout{grid-template-columns:1fr}.territory-board-wrap{order:2}.territory-player-question{order:1}.territory-question h2{min-height:unset;font-size:clamp(21px,5vw,28px)}.territory-question,.territory-board-wrap{padding:12px}}
 </style>
   <link rel="stylesheet" href="assets/enhancements.css">
 </head>
 <body>
-<div id="rulesOverlay" class="rules-overlay" role="dialog" aria-modal="true" aria-labelledby="posterTitle">
+<div id="rulesOverlay" class="rules-overlay" role="dialog" aria-modal="true" aria-labelledby="posterTitle" hidden>
   <div class="rules-poster">
     <div id="posterTitle" class="poster-title">ACID RAIN · 게임 소개 및 규칙</div>
     <div class="poster-section">게임 소개</div>
     <p class="poster-rule">내려오는 두 선택지 중 정답을 골라 살아남으세요.</p>
-    <p class="poster-note">문해력 · 가짜 판별 · AI 윤리 문제를 풀며 판단력을 시험하는 퀴즈 게임입니다. 싱글 모드에서는 생명을 지키고, AI 대전에서는 상대보다 먼저 100점을 달성하세요.</p>
+    <p class="poster-note">문해력과 AI 윤리는 내려오는 선택지를 고르는 산성비 퀴즈입니다. 가짜 판별은 자료의 진위를 맞히며 선을 이어 칸을 차지하는 도트 앤 박스 게임입니다.</p>
     <div class="poster-section">기본 규칙</div>
     <p class="poster-rule">1. 싱글 모드는 생명 3개로 시작합니다.</p><p class="poster-note">오답 또는 시간 초과 시 생명이 1개 줄어들며, 생명을 모두 잃으면 종료됩니다.</p>
     <p class="poster-rule">2. AI 대전은 먼저 100점 이상을 달성하면 승리합니다.</p><p class="poster-note">정답 +10점, 오답 또는 시간 초과 -10점입니다. AI가 정답을 맞히면 AI 점수가 10점 올라갑니다.</p>
     <p class="poster-rule">3. 선택지가 바닥에 닿기 전에 답을 선택하세요.</p><p class="poster-note">진행할수록 판단 시간이 짧아집니다.</p>
     <p class="poster-rule">4. 마우스 또는 키보드로 답을 고를 수 있습니다.</p><p class="poster-note">왼쪽: 1 또는 A · 오른쪽: 2 또는 L</p>
-    <p class="poster-rule">5. 게임 종료 후 오답 노트에서 정답과 해설을 확인하세요.</p>
+    <p class="poster-rule">5. 가짜 판별 모드에서는 진짜·가짜를 맞혀 땅을 차지하세요. AI와 1대1 또는 1대1대1대1로 대결할 수 있습니다.</p><p class="poster-note">문해력·AI 윤리는 기존 산성비 퀴즈 방식으로 진행됩니다.</p>
     <div class="poster-actions"><button id="closeRules" class="primary" type="button">확인하고 게임하기</button></div>
   </div>
 </div>
@@ -96,13 +332,13 @@ footer{text-align:center;padding:25px 0 8px;color:#7386a0;font-size:10px}
 <!-- 게임 소개: 방문자가 게임의 목적과 특징을 이해할 수 있도록 추가한 콘텐츠 -->
 <section class="panel" aria-labelledby="aboutTitle">
   <h2 id="aboutTitle">ACID RAIN · QUIZ BATTLE 소개</h2>
-  <p class="muted">ACID RAIN · QUIZ BATTLE은 화면 위에서 내려오는 두 개의 선택지 중 정답을 빠르게 골라야 하는 퀴즈 게임입니다. 문제가 바뀔 때마다 정답을 판단하고, 선택지가 바닥에 닿기 전에 답을 선택하세요.</p>
+  <p class="muted">문해력과 AI 윤리는 내려오는 선택지 중 정답을 고르는 산성비 퀴즈입니다. 가짜 판별은 진짜·가짜 정보를 판별하며 땅을 차지하는 땅따먹기 게임입니다.</p>
   <p class="muted">게임은 <strong>문해력</strong>, <strong>가짜 판별</strong>, <strong>AI 윤리</strong> 세 가지 주제를 제공합니다. 문장의 의미를 이해하고, 정보의 근거를 살펴보고, 인공지능과 관련된 상황을 생각하며 문제를 풀어 보세요.</p>
-  <p class="muted">혼자 생명을 지키며 도전하는 싱글 모드와 AI를 상대로 점수 경쟁을 하는 AI 대전 모드가 있습니다. 게임이 끝나면 오답 노트에서 선택한 답과 정답, 해설을 확인할 수 있습니다.</p>
+  <p class="muted">문해력·AI 윤리는 싱글 또는 AI 대전으로 플레이하고, 가짜 판별에서는 AI와 도트 앤 박스 대결을 펼치세요. 1대1 또는 1대1대1대1로 플레이할 수 있습니다.</p>
 </section>
 
 <div class="panel"><div class="setup">
-<div><label class="label">01 / 주제</label><div class="choices" id="topics"><button class="choice selected" data-v="문해력">문해력</button><button class="choice" data-v="비판적 사고">가짜 판별</button><button class="choice" data-v="AI 윤리">AI 윤리</button></div></div>
+<div><label class="label">01 / 주제</label><div class="choices" id="topics"><button class="choice selected" data-v="문해력">문해력</button><button class="choice" data-v="가짜 판별">가짜 판별 · 도트 앤 박스</button><button class="choice" data-v="AI 윤리">AI 윤리</button></div></div>
 <div><label class="label">02 / 모드</label><div class="choices two" id="modes"><button class="choice selected" data-v="single">싱글</button><button class="choice" data-v="ai">AI 대전</button></div></div>
 <div id="levelSetting"><label class="label">03 / AI 난이도</label><div class="choices" id="levels"><button class="choice selected" data-v="easy">쉬움</button><button class="choice" data-v="medium">보통</button><button class="choice" data-v="hard">어려움</button></div></div>
 </div><div class="row" style="margin-top:22px"><button class="primary" id="start">▶ 게임 시작</button><span class="muted" style="font-size:11px">키보드: 1/A 또는 2/L</span></div></div>
@@ -114,10 +350,34 @@ footer{text-align:center;padding:25px 0 8px;color:#7386a0;font-size:10px}
   <div class="rule"><b>＋ 정답과 오답 점수</b><span>AI 대전에서 플레이어가 정답을 고르면 +10점, 오답이나 시간 초과는 -10점입니다. AI가 정답을 맞히면 AI 점수가 10점 올라가며, AI의 오답은 점수 변화가 없습니다.</span></div>
   <div class="rule"><b>⌁ 제한 시간</b><span>두 선택지는 위에서 아래로 내려옵니다. 바닥에 닿기 전에 답을 선택하세요. 진행할수록 제한 시간이 짧아져 더 빠른 판단이 필요합니다.</span></div>
   <div class="rule"><b>⌨ 조작 방법</b><span>마우스로 선택지를 눌러도 되고, 키보드에서 1 또는 A를 눌러 왼쪽 선택지를, 2 또는 L을 눌러 오른쪽 선택지를 선택할 수 있습니다.</span></div>
-  <div class="rule"><b>📘 주제와 오답 노트</b><span>문해력, 가짜 판별, AI 윤리 중 주제를 선택하세요. 게임 종료 후 오답 노트에서 내가 고른 답, 정답, 해설을 확인할 수 있습니다.</span></div>
+  <div class="rule"><b>📘 주제와 오답 노트</b><span>문해력, 가짜 판별, AI 윤리 중 주제를 선택하세요. 가짜 판별은 진짜·가짜를 맞히며 선을 이어 칸을 차지하는 도트 앤 박스 방식이고, 나머지 주제는 산성비 퀴즈로 진행됩니다.</span></div>
 </div>
 </section>
 </section>
+
+<section id="territory" class="screen">
+  <p class="case-kicker">FAKE CHECK · DOTS AND BOXES</p>
+  <h1>가짜 판별 도트 앤 박스</h1>
+  <p class="territory-intro">차례대로 선 하나를 선택하고, 자료가 진짜인지 가짜인지 판별하세요. 정답이면 선이 연결되고, 네 변을 완성한 칸을 차지합니다.</p>
+  <div class="territory-stats" id="territoryStats"></div>
+  <div class="territory-ai-questions" id="territoryAIQuestions" aria-label="AI의 차례와 문제"></div>
+  <div class="territory-layout">
+    <div class="territory-board-wrap">
+      <div id="territoryBoard" class="territory-board" aria-label="도트 앤 박스 게임판"></div>
+      <div class="territory-board-legend"><span><i style="background:#0e9f9a"></i>나</span><span><i style="background:#e45486"></i>AI 1</span><span><i style="background:#6577e8"></i>AI 2</span><span><i style="background:#e3a52f"></i>AI 3</span></div>
+      <p class="muted" id="territoryHint">점과 점 사이의 선을 눌러 선택하세요. 선을 그을 때마다 가짜 판별 문제를 풉니다.</p>
+    </div>
+    <article class="territory-question territory-player-question">
+      <div class="case-badge">내 차례 · 1 또는 2로 답하기</div>
+      <p id="territoryTurn" class="territory-turn">내 차례입니다. 게임판에서 선을 선택하세요.</p>
+      <h2 id="territoryPrompt">게임판의 빈 선을 선택하면 판별할 자료가 여기에 표시됩니다.</h2>
+      <p id="territoryFeedback" class="case-feedback" aria-live="polite">정답이면 선이 연결됩니다. 오답이면 자기 점수가 -1점 됩니다.</p>
+      <div class="territory-answer-row"><button id="realAnswer" class="primary" disabled>1️⃣ 진짜</button><button id="fakeAnswer" class="primary fake-answer" disabled>2️⃣ 가짜</button></div>
+    </article>
+  </div>
+  <div class="case-controls"><button id="territoryHome" class="secondary">메인 화면</button></div>
+</section>
+
 <section id="game" class="screen">
 <div class="stats"><div class="stat"><span>STAGE</span><strong id="stage">01</strong></div><div class="stat"><span id="healthLabel">HEALTH</span><strong id="hearts" style="color:var(--pink)">♥ ♥ ♥</strong></div><div class="stat"><span>MY SCORE</span><strong id="score">0</strong></div></div>
 <div id="battle" class="battle"><div class="bcard">YOU <strong id="youScore">0</strong><div style="color:#647994;margin-top:8px">목표: 100점</div></div><div class="bcard ai">AI <strong id="cpuScore">0</strong><div style="color:#647994;margin-top:8px">목표: 100점</div></div></div>
@@ -140,50 +400,88 @@ footer{text-align:center;padding:25px 0 8px;color:#7386a0;font-size:10px}
    자동 생성, 사례 조합, 문제 문장 변형 기능은 없습니다.
    각 게임은 선택한 주제의 고정 문제만 무작위 순서로 출제합니다. */
 const BANK = {
+
 "문해력": [
-{q:"'말을 아끼다'의 뜻은?",a:["말을 적게 하다","말을 많이 하다"],c:0,e:"필요한 말만 하며 함부로 말하지 않는다는 뜻이다."},
-{q:"'가는 말이 고와야 오는 말이 곱다'는?",a:["빨리 말해야 한다","남을 좋게 대해야 나도 좋게 대접받는다"],c:1,e:"상대방에게 예의 있게 말해야 상대방도 나를 좋게 대한다."},
-{q:"'그러나'가 나타내는 관계는?",a:["대조","시간 순서"],c:0,e:"앞 내용과 반대되거나 대조되는 내용을 이어 준다."},
-{q:"'마침내'의 뜻은?",a:["처음부터","오랜 과정 끝에 결국"],c:1,e:"여러 과정을 거친 뒤 결국 이루어졌다는 뜻이다."},
-{q:"글의 중심 내용을 찾으려면?",a:["핵심 문장과 반복되는 내용을 찾는다","가장 긴 문장만 외운다"],c:0,e:"핵심 문장과 반복되는 내용을 살펴본다."},
-{q:"'수포로 돌아갔다'는?",a:["물가로 갔다","노력이나 계획이 헛일이 되었다"],c:1,e:"노력이나 계획이 성과 없이 끝났다는 뜻이다."},
-{q:"객관적인 사실은?",a:["오늘은 월요일이다","월요일은 가장 싫은 날이다"],c:0,e:"요일은 확인할 수 있지만 싫어하는 날은 사람마다 다르다."},
-{q:"'비가 와서 경기가 취소되었다'의 원인은?",a:["경기 취소","비가 온 것"],c:1,e:"비가 온 것이 원인이고 경기 취소가 결과다."},
-{q:"좋은 글의 제목은?",a:["중심 내용을 나타낸다","어려운 단어만 나열한다"],c:0,e:"제목은 글의 중심 내용을 드러내는 것이 좋다."},
-{q:"'지만'이 문장에서 하는 역할은?",a:["대조되는 내용을 이어 준다","시간을 나타내기만 한다"],c:0,e:"'지만'은 대조나 양보의 관계를 나타낸다."},
-{q:"주장을 뒷받침하는 것은?",a:["근거","장식"],c:0,e:"근거는 주장이 타당하다는 것을 뒷받침하는 이유나 자료다."},
-{q:"'예를 들어'의 기능은?",a:["구체적인 사례를 제시한다","앞 내용을 무조건 부정한다"],c:0,e:"사례를 들어 설명을 구체적으로 만든다."},
-{q:"'왜냐하면' 뒤에 주로 오는 것은?",a:["이유나 근거","새 제목"],c:0,e:"앞서 말한 내용의 이유를 설명한다."},
-{q:"문맥으로 단어 뜻을 추론한다는 것은?",a:["앞뒤 내용을 활용한다","글자 수만 센다"],c:0,e:"주변 문장과 상황이 단어의 의미를 이해하는 단서가 된다."},
-{q:"'반면에'가 나타내는 관계는?",a:["차이 또는 대조","시간 순서"],c:0,e:"두 대상이나 상황의 차이를 드러낸다."},
-{q:"요약할 때 적절한 방법은?",a:["핵심 내용을 간결하게 정리한다","모든 문장을 그대로 복사한다"],c:0,e:"중요한 내용을 중심으로 짧게 정리한다."},
-{q:"'발이 넓다'의 관용적 의미는?",a:["아는 사람이 많다","발이 크다"],c:0,e:"여러 사람과 폭넓게 알고 지낸다는 뜻이다."},
-{q:"'식은 죽 먹기'는?",a:["매우 쉬운 일","매우 위험한 일"],c:0,e:"아주 하기 쉬운 일을 뜻한다."},
-{q:"의인법의 예시는?",a:["바람이 속삭인다","바람이 초속 3미터로 분다"],c:0,e:"사람이 아닌 바람을 사람처럼 표현했다."},
-{q:"논설문의 특징은?",a:["주장과 근거를 제시한다","운율만으로 구성된다"],c:0,e:"논설문은 주장을 근거로 뒷받침한다."}
+  {
+    q: "학교 게시판에 '금일 도서관은 오후 5시에 문을 닫습니다.'라고 적혀 있다. '금일'의 뜻은?",
+    a: ["오늘", "내일"],
+    c: 0,
+    e: "금일은 오늘이고, 명일은 내일이다."
+  },
+  {
+    q: "물건을 구매하고 카드로 값을 치렀다. 알맞은 표현은?",
+    a: ["결재했다", "결제했다"],
+    c: 1,
+    e: "결제는 돈을 치르는 것이고, 결재는 안건을 승인하는 것이다."
+  },
+  {
+    q: "학교가 공사 때문에 과제 제출 기한을 일주일 미뤄 주었다. 알맞은 말은?",
+    a: ["유예", "유보"],
+    c: 0,
+    e: "유예는 기한을 미루는 것이고, 유보는 결정을 보류하는 것이다."
+  },
+  {
+    q: "우리 동아리는 일회용품 사용을 줄이고 환경 보호를 목표로 삼았다. 알맞은 표현은?",
+    a: ["환경 보호를 지양한다", "환경 보호를 지향한다"],
+    c: 1,
+    e: "지향은 목표로 삼아 나아가는 것이고, 지양은 피하거나 하지 않으려는 것이다."
+  },
+  {
+    q: "친구의 설명을 듣고 그 이유가 타당하다고 이해하여 받아들였다. 알맞은 말은?",
+    a: ["납득했다", "설득했다"],
+    c: 0,
+    e: "납득은 이해하고 받아들이는 것이고, 설득은 상대방이 받아들이도록 하는 것이다."
+  },
+  {
+    q: "회의에서 담당자는 한 가지 중요한 위험을 미처 살피지 못했다. 알맞은 표현은?",
+    a: ["위험을 간과했다", "위험을 간주했다"],
+    c: 0,
+    e: "간과는 대수롭지 않게 여기거나 놓치는 것이고, 간주는 무엇을 어떤 것으로 여기는 것이다."
+  },
+  {
+    q: "지원서를 작성하면서 이름과 연락처를 빈칸에 적었다. 알맞은 말은?",
+    a: ["기재했다", "게재했다"],
+    c: 0,
+    e: "기재는 문서에 내용을 적는 것이고, 게재는 글이나 자료를 매체에 싣는 것이다."
+  },
+  {
+    q: "편집자가 사실과 다른 내용으로 기사를 작성해 사건의 의미를 잘못 전달했다. 알맞은 표현은?",
+    a: ["사실을 훼손했다", "사실을 왜곡했다"],
+    c: 1,
+    e: "훼손은 손상하는 것이고, 왜곡은 사실이나 의미를 비뚤어지게 바꾸는 것이다."
+  },
+  {
+    q: "안내문에 적힌 장소를 다른 장소로 잘못 알고 찾아갔다. 알맞은 말은?",
+    a: ["장소를 오인했다", "장소를 오해했다"],
+    c: 0,
+    e: "오인은 사실이나 대상을 잘못 인식하는 것이고, 오해는 뜻이나 의도를 잘못 이해하는 것이다."
+  },
+  {
+    q: "친구와 다투었지만 화를 참으며 심한 말을 하지 않았다. 알맞은 말은?",
+    a: ["감정을 자제했다", "감정을 절제했다"],
+    c: 0,
+    e: "자제는 감정이나 행동을 억누르는 것이고, 절제는 정도가 지나치지 않도록 조절하는 것이다."
+  },
+  {
+    q: "새로운 안전 규칙이 실제 사고를 줄이는 효과가 있는지 조사했다. 알맞은 말은?",
+    a: ["실효성", "실현성"],
+    c: 0,
+    e: "실효성은 실제 효과가 있는 성질이고, 실현성은 실제로 이루어질 가능성이다."
+  },
+  {
+    q: "탐정은 발자국과 목격자 진술을 근거로 범인이 지나간 길을 논리적으로 판단했다. 알맞은 말은?",
+    a: ["추론", "추측"],
+    c: 0,
+    e: "추론은 근거와 논리로 결론을 이끌어 내는 것이고, 추측은 확실하지 않은 내용을 짐작하는 것이다."
+  },
+  {
+    q: "과학자가 실험 증거를 제시해 기존 가설이 틀렸음을 밝혀냈다. 알맞은 말은?",
+    a: ["반증했다", "반박했다"],
+    c: 0,
+    e: "반증은 증거로 주장이 틀렸음을 밝히는 것이고, 반박은 상대의 주장에 논리적으로 맞서는 것이다."
+  }
 ],
-"비판적 사고": [
-{q:"SNS에서 '내일부터 전국 학교 휴교!'라는 글을 봤다.",a:["교육청과 학교의 공식 공지를 확인한다","공유가 많으니 믿는다"],c:0,e:"공유 횟수만으로 사실을 판단할 수 없다."},
-{q:"충격적인 뉴스 제목에 근거가 없다.",a:["제목이 강렬하니 믿는다","본문의 근거와 다른 보도를 확인한다"],c:1,e:"자극적인 제목에 속지 말고 근거를 확인한다."},
-{q:"유명인이 이상한 말을 하는 영상이 있다.",a:["원본과 공식 계정 등을 확인한다","얼굴이 같으니 진짜다"],c:0,e:"영상은 합성되거나 맥락이 잘릴 수 있다."},
-{q:"'이 음식을 먹으면 모든 병이 낫는다'는 광고는?",a:["바로 구매한다","과학적 근거와 공식 정보를 확인한다"],c:1,e:"과장된 건강 주장은 근거를 확인해야 한다."},
-{q:"사진 속 사건이 실제인지 확인하려면?",a:["원본, 촬영 시점, 장소를 확인한다","사진은 무조건 진짜다"],c:0,e:"사진이 다른 사건의 자료로 재사용될 수 있다."},
-{q:"전문가 이름이 없는 글을 봤다.",a:["전문가라고 했으니 믿는다","이름, 소속, 발언과 근거를 확인한다"],c:1,e:"전문가라는 표현만으로 신뢰성이 보장되지는 않는다."},
-{q:"여러 사이트에 같은 주장이 있다.",a:["여러 곳에 있으니 무조건 사실이다","같은 자료를 복사했는지 확인한다"],c:1,e:"여러 사이트가 같은 잘못된 정보를 복사했을 수 있다."},
-{q:"친구 두 명이 좋아하는 게임을 반 전체가 좋아한다고 결론 내렸다.",a:["대표적인 조사다","표본이 작아 성급한 일반화일 수 있다"],c:1,e:"소수의 경험이 전체를 대표한다고 볼 수 없다."},
-{q:"두 사건이 동시에 일어났다. 하나가 다른 하나의 원인일까?",a:["동시에 일어났다는 사실만으로는 알 수 없다","동시에 일어났으니 반드시 원인이다"],c:0,e:"상관관계만으로 인과관계를 확정할 수 없다."},
-{q:"자신의 의견과 반대되는 증거를 발견했다.",a:["증거를 검토하고 생각을 수정할 수 있다","무조건 무시한다"],c:0,e:"비판적 사고는 반대 증거도 공정하게 검토한다."},
-{q:"'모두가 그렇게 하니까 옳다.'",a:["다수의 선택과 옳고 그름은 별개다","많은 사람이 하면 무조건 옳다"],c:0,e:"다수의 의견만으로 사실이나 도덕성을 확정할 수 없다."},
-{q:"상대방의 외모를 공격하며 주장을 반박했다.",a:["논리적인 반박이다","주장 대신 사람을 공격하는 인신공격이다"],c:1,e:"주장의 타당성은 근거와 논리로 판단해야 한다."},
-{q:"통계 그래프의 세로축이 95부터 시작한다.",a:["차이가 실제보다 크게 보이는지 살핀다","그래프는 무조건 거짓이다"],c:0,e:"축의 범위는 차이를 과장해 보이게 할 수 있다."},
-{q:"인터넷 글에 출처 링크가 없다.",a:["출처가 없어도 무조건 사실이다","신뢰성을 판단할 추가 근거가 필요하다"],c:1,e:"출처를 확인할 수 없으면 검증이 어려워진다."},
-{q:"'이 방법을 쓰면 100% 성공한다'는 광고는?",a:["100%라는 숫자를 믿는다","성공 조건과 검증 자료를 확인한다"],c:1,e:"절대적인 표현에는 구체적인 근거가 필요하다."},
-{q:"이미 돈을 썼으니 손해가 나도 계속 투자하려 한다.",a:["매몰 비용에 끌린 판단일 수 있다","이미 쓴 돈은 반드시 회수된다"],c:0,e:"앞으로의 비용과 이익을 따져야 한다."},
-{q:"검색 결과 맨 위에 나온 페이지는?",a:["무조건 가장 정확하다","광고나 노출 순위일 수 있어 내용도 평가한다"],c:1,e:"검색 순위가 정확성을 보장하지는 않는다."},
-{q:"AI 요약문에 원문에 없는 주장이 있다.",a:["원문과 대조하고 오류를 수정한다","요약문은 항상 정확하다"],c:0,e:"자동 요약도 원문을 잘못 해석할 수 있다."},
-{q:"정확한 답을 모를 때 좋은 태도는?",a:["아는 척하며 추측을 사실로 말한다","모른다고 인정하고 확인한다"],c:1,e:"불확실성을 인정하는 것이 더 정확한 판단으로 이어진다."},
-{q:"비판적 사고의 목적은?",a:["모든 정보를 무조건 의심만 한다","정보와 주장을 근거에 따라 평가한다"],c:1,e:"비판적 사고는 무조건 반대하는 것이 아니라 근거를 따져 판단하는 것이다."}
-],
+
 "AI 윤리": [
 {q:"AI로 과제를 작성했다면?",a:["학교 규칙을 지키고 필요한 경우 사용 사실을 밝힌다","AI가 썼으니 내 글이라고 한다"],c:0,e:"AI 사용 규칙을 지키고 결과물에 책임져야 한다."},
 {q:"AI가 자신 있게 틀린 답을 말한다.",a:["자신 있게 말했으니 사실이다","신뢰할 만한 자료로 확인한다"],c:1,e:"AI는 그럴듯하지만 틀린 정보를 만들 수 있다."},
@@ -235,9 +533,9 @@ function shuffle(arr){arr=[...arr];for(let i=arr.length-1;i>0;i--){const j=Math.
 function stop(){if(raf)cancelAnimationFrame(raf);raf=0;if(timer!==null)clearTimeout(timer);timer=null;}
 function bind(group,key){$(group).addEventListener("click",e=>{const b=e.target.closest("[data-v]");if(!b)return;settings[key]=b.dataset.v;$(group).querySelectorAll(".choice").forEach(x=>x.classList.toggle("selected",x===b));});}
 bind("topics","topic");bind("modes","mode");bind("levels","level");
-function updateLevelSetting(){$("levelSetting").style.display=settings.mode==="ai"?"":"none";}
-updateLevelSetting();$("modes").addEventListener("click",updateLevelSetting);
-function startGame(){playSfx("start");stop();pool=shuffle(BANK[settings.topic]);game={stage:0,hp:3,score:0,aiScore:0,attempts:0,correct:0,wrong:[],used:0,running:true};$("battle").classList.toggle("show",settings.mode==="ai");$("healthLabel").textContent=settings.mode==="ai"?"BATTLE":"HEALTH";$("hearts").textContent=settings.mode==="ai"?"NO LIVES":"♥ ♥ ♥";$("topicName").textContent=settings.topic;show("game");nextQuestion();}
+function updateLevelSetting(){const fake=settings.topic==="가짜 판별";$("modes").style.display="";$("modes").querySelector('[data-v="single"]').textContent=fake?"1대1 (나 vs AI)":"싱글";$("modes").querySelector('[data-v="ai"]').textContent=fake?"1대1대1대1":"AI 대전";$("levelSetting").style.display=settings.mode==="ai"&&!fake?"":"none";}
+updateLevelSetting();$("modes").addEventListener("click",updateLevelSetting);$("topics").addEventListener("click",updateLevelSetting);
+function launchGame(){if(settings.topic==="가짜 판별"){playSfx("start");startTerritoryGame();return;}playSfx("start");stop();pool=shuffle(BANK[settings.topic]);game={stage:0,hp:3,score:0,aiScore:0,attempts:0,correct:0,wrong:[],used:0,running:true};$("battle").classList.toggle("show",settings.mode==="ai");$("healthLabel").textContent=settings.mode==="ai"?"BATTLE":"HEALTH";$("hearts").textContent=settings.mode==="ai"?"NO LIVES":"♥ ♥ ♥";$("topicName").textContent=settings.topic;show("game");nextQuestion();}
 function nextQuestion(){if(!game?.running)return;if(settings.mode==="single"&&game.hp<=0){endGame("GAME OVER","생명을 모두 잃었습니다.");return;}if(game.used>=pool.length){endGame("QUIZ COMPLETE","이 주제의 고정 문제를 모두 풀었습니다!");return;}
 const item=pool[game.used++],order=Math.random()<.5?[0,1]:[1,0];q={...item,options:order.map(i=>item.a[i]),correctPosition:order.indexOf(item.c),elapsed:0,duration:Math.max(2800,9500-Math.floor(game.stage/5)*700)};game.stage++;locked=false;aiAnswered=false;lastFrame=0;$("question").textContent=q.q;$("subquestion").textContent=settings.mode==="ai"?"먼저 100점에 도달하면 승리!":"정답을 선택하세요!";$("feedback").textContent="산성비가 내려옵니다...";$("feedback").style.color="var(--yellow)";$("progressFill").style.width="0%";buttons.forEach((b,i)=>{b.disabled=false;b.style.top="30px";b.style.opacity="1";b.querySelector(".txt").textContent=q.options[i];});updateStats();raf=requestAnimationFrame(tick);}
 function tick(now){if(!game?.running||locked)return;if(!lastFrame)lastFrame=now;const dt=Math.min((now-lastFrame)/1000,.05);lastFrame=now;q.elapsed+=dt*1000;const lane=buttons[0].parentElement.parentElement,maxY=Math.max(35,lane.clientHeight-110),progress=Math.min(1,q.elapsed/q.duration),y=30+progress*maxY;buttons.forEach(b=>b.style.top=y+"px");$("progressFill").style.width=(progress*100)+"%";
@@ -249,16 +547,367 @@ function finishRound(winner){if(locked||!game?.running)return;locked=true;stop()
 function timeoutRound(){if(locked||!game?.running)return;playSfx("timeout");locked=true;stop();if(settings.mode==="ai"){game.score-=10;game.attempts++;game.wrong.push({q:q.q,chosen:"시간 초과",correct:q.options[q.correctPosition],explain:q.e});$("feedback").textContent="💥 시간 초과! -10점";}else{game.hp=Math.max(0,game.hp-1);game.attempts++;game.wrong.push({q:q.q,chosen:"시간 초과",correct:q.options[q.correctPosition],explain:q.e});$("feedback").textContent="💥 바닥에 닿았습니다! ♥ -1";}$("feedback").style.color="var(--pink)";buttons.forEach(b=>b.disabled=true);$("subquestion").textContent="정답: "+q.options[q.correctPosition];$("floor").animate([{opacity:1},{opacity:.2},{opacity:1}],300);updateStats();timer=setTimeout(()=>{if(!game?.running)return;if(settings.mode==="single"&&game.hp<=0)endGame("GAME OVER","생명을 모두 잃었습니다.");else nextQuestion();},500);}
 function updateStats(){$("stage").textContent=String(game.stage).padStart(2,"0");$("hearts").textContent=settings.mode==="ai"?"—":(game.hp?"♥ ".repeat(game.hp).trim():"♡ ♡ ♡");$("score").textContent=game.score;$("youScore").textContent=game.score;$("cpuScore").textContent=game.aiScore;}
 function endGame(title,message){if(!game||!game.running)return;playSfx(title==="YOU WIN"?"win":title==="AI WIN"||title==="GAME OVER"?"lose":"click");game.running=false;locked=true;stop();buttons.forEach(b=>b.disabled=true);$("resultTitle").textContent=title;$("resultMessage").textContent=message;$("finalScore").textContent=game.score;$("finalStage").textContent=game.stage;$("accuracy").textContent=game.attempts?Math.round(game.correct/game.attempts*100)+"%":"0%";$("battleResult").textContent=settings.mode==="ai"?"내 점수 "+game.score+"점 · AI "+game.aiScore+"점":"";const list=$("reviews");list.replaceChildren();if(!game.wrong.length){const el=document.createElement("div");el.className="empty";el.textContent="오답이 없습니다! 훌륭합니다.";list.append(el);}else{game.wrong.forEach((w,i)=>{const card=document.createElement("article");card.className="review";const h=document.createElement("h3");h.textContent=(i+1)+". "+w.q;const a=document.createElement("p");a.className="wrong";a.textContent="내 선택: "+w.chosen;const c=document.createElement("p");c.className="correct";c.textContent="정답: "+w.correct;const e=document.createElement("p");e.className="explain";e.textContent="해설: "+w.explain;card.append(h,a,c,e);list.append(card);});}show("result");}
+
+// 가짜 판별은 산성비 퀴즈와 분리된 땅따먹기 대전입니다.
+const TERRITORY_FACTS = [
+ {text:"대한민국의 수도는 서울이다.",answer:"real",why:"서울은 대한민국의 수도입니다."},
+ {text:"번개가 치면 천둥 소리가 날 수 있다.",answer:"real",why:"번개로 공기가 급격히 가열되며 천둥이 발생합니다."},
+ {text:"사람은 잠을 전혀 자지 않아도 건강하게 지낼 수 있다.",answer:"fake",why:"수면은 신체와 뇌 기능을 유지하는 데 필요합니다."},
+ {text:"물은 해수면에서 약 100℃에 끓는다.",answer:"real",why:"일반적인 해수면 기압에서 물의 끓는점은 약 100℃입니다."},
+ {text:"인터넷에서 많이 공유된 정보는 무조건 사실이다.",answer:"fake",why:"공유 횟수는 사실 여부를 증명하지 않습니다."},
+ {text:"사진은 언제나 촬영 당시의 상황을 정확히 보여 준다.",answer:"fake",why:"사진은 편집되거나 다른 시점·장소의 사진이 재사용될 수 있습니다."},
+ {text:"달은 스스로 빛을 만들어 낸다.",answer:"fake",why:"달은 태양빛을 반사해 밝게 보입니다."},
+ {text:"공식 발표인지 확인할 때 기관의 공식 홈페이지를 살펴볼 수 있다.",answer:"real",why:"공식 홈페이지는 발표 내용을 확인할 수 있는 중요한 출처입니다."},
+ {text:"AI가 만든 글은 항상 정확하고 오류가 없다.",answer:"fake",why:"AI는 그럴듯하지만 틀린 내용을 생성할 수 있습니다."},
+ {text:"같은 소문이 여러 게시판에 있으면 독립적으로 검증된 것이다.",answer:"fake",why:"여러 게시판이 하나의 출처를 복사했을 수 있습니다."},
+ {text:"정보를 확인할 때 작성 날짜와 출처를 함께 보는 것이 도움이 된다.",answer:"real",why:"날짜와 출처는 정보가 현재 상황에 맞는지 판단하는 데 도움이 됩니다."},
+ {text:"지구는 태양 주위를 돈다.",answer:"real",why:"지구는 태양 주위를 공전합니다."},
+ {text:"모든 바이러스는 항생제로 치료할 수 있다.",answer:"fake",why:"항생제는 세균에 작용하며 바이러스 감염에 일반적으로 효과가 없습니다."},
+ {text:"문맥이 잘린 영상은 원래 의미와 다르게 보일 수 있다.",answer:"real",why:"앞뒤 상황이 빠지면 발언이나 행동의 의미가 달라질 수 있습니다."},
+ {text:"검색 결과 첫 번째 페이지는 반드시 가장 정확하다.",answer:"fake",why:"검색 순위는 정확성을 보장하지 않습니다."},
+ {text:"출처가 불분명한 링크에 개인정보를 입력하기 전에는 확인해야 한다.",answer:"real",why:"피싱과 개인정보 유출을 예방하기 위해 출처를 확인해야 합니다."},
+ {text:"지구에는 중력이 없다.",answer:"fake",why:"지구의 중력은 물체를 지표면 쪽으로 끌어당깁니다."},
+ {text:"두 사건이 동시에 일어났다는 사실만으로 서로 원인과 결과라고 단정할 수 없다.",answer:"real",why:"동시에 일어났다는 사실만으로 인과관계가 입증되지는 않습니다."},
+ {text:"인터넷에 공개된 모든 사진은 마음대로 사용해도 된다.",answer:"fake",why:"사진에도 저작권과 이용 조건이 적용될 수 있습니다."},
+ {text:"가짜 정보인지 판단할 때 다른 신뢰할 만한 출처와 비교할 수 있다.",answer:"real",why:"독립적인 출처를 비교하면 정보의 신뢰성을 평가하는 데 도움이 됩니다."},
+ {text:"모든 구름은 땅에 비를 내린다.",answer:"fake",why:"구름의 종류와 대기 상태에 따라 비가 내리지 않을 수 있습니다."},
+ {text:"지구는 대략 24시간에 한 번 자전한다.",answer:"real",why:"지구는 약 하루를 주기로 자전합니다."},
+ {text:"인터넷 게시물에 전문가 사진이 있으면 내용은 반드시 사실이다.",answer:"fake",why:"사진이나 직함만으로 게시물의 사실 여부를 확인할 수 없습니다."},
+ {text:"주장의 근거가 되는 원문을 직접 확인하는 것은 도움이 된다.",answer:"real",why:"요약이나 전달 과정에서 빠진 맥락을 확인할 수 있습니다."},
+ {text:"사람은 눈을 뜨고 재채기를 절대로 할 수 없다.",answer:"fake",why:"재채기할 때 눈을 감는 경우가 많지만 절대 불가능한 것은 아닙니다."},
+ {text:"물체는 지구의 중력 때문에 아래로 떨어질 수 있다.",answer:"real",why:"중력은 물체를 지구 중심 방향으로 끌어당깁니다."},
+ {text:"조회 수가 높은 영상은 조작될 가능성이 없다.",answer:"fake",why:"조회 수는 영상이 조작되지 않았다는 증거가 아닙니다."},
+ {text:"뉴스의 게시 날짜를 확인하면 오래된 정보를 구분하는 데 도움이 된다.",answer:"real",why:"예전에 사실이었던 정보도 현재에는 달라졌을 수 있습니다."},
+ {text:"모든 금속은 자석에 붙는다.",answer:"fake",why:"철처럼 자석에 잘 붙는 금속도 있지만 모든 금속이 그런 것은 아닙니다."},
+ {text:"지구 표면의 상당 부분은 바다로 덮여 있다.",answer:"real",why:"지구 표면의 약 71%가 물로 덮여 있습니다."},
+ {text:"같은 문장을 여러 계정이 올리면 각각 독립적으로 확인한 것이다.",answer:"fake",why:"계정들이 한 게시물을 복사했을 수 있으므로 별도 확인이 필요합니다."},
+ {text:"사진의 촬영 장소와 날짜를 확인하면 맥락을 파악하는 데 도움이 된다.",answer:"real",why:"장소와 날짜가 다르면 사진이 설명하는 사건도 달라질 수 있습니다."},
+ {text:"인공지능이 자신 있게 답하면 그 답은 틀릴 수 없다.",answer:"fake",why:"AI는 확신에 찬 표현으로도 잘못된 정보를 말할 수 있습니다."},
+ {text:"주장을 확인할 때는 근거와 출처를 함께 살펴야 한다.",answer:"real",why:"주장만 반복하는 것보다 확인 가능한 근거가 중요합니다."},
+ {text:"인터넷에서 찾은 모든 자료는 저작권 제한 없이 자유롭게 쓸 수 있다.",answer:"fake",why:"온라인 자료에도 저작권과 이용 조건이 적용될 수 있습니다."},
+ {text:"태양은 별이다.",answer:"real",why:"태양은 스스로 빛과 에너지를 내는 별입니다."},
+ {text:"태양은 지구보다 작다.",answer:"fake",why:"태양의 지름은 지구보다 훨씬 큽니다."},
+ {text:"달의 모양은 지구에서 보이는 햇빛을 받은 부분에 따라 달라진다.",answer:"real",why:"달의 위상은 태양·지구·달의 상대적인 위치에 따라 달라집니다."},
+ {text:"계절은 지구와 태양 사이의 거리만으로 결정된다.",answer:"fake",why:"계절의 주된 원인은 지구 자전축의 기울기입니다."},
+ {text:"물은 얼면 부피가 늘어날 수 있다.",answer:"real",why:"물은 얼음이 될 때 일반적으로 부피가 증가합니다."},
+ {text:"소리는 진공 속에서도 공기 중처럼 전달된다.",answer:"fake",why:"소리는 전달할 매질이 필요하므로 진공에서는 전파되지 않습니다."},
+ {text:"빛은 소리보다 빠르게 이동한다.",answer:"real",why:"빛의 속도는 공기 중 소리의 속도보다 훨씬 빠릅니다."},
+ {text:"사람의 혈액은 몸속에서 파란색이다.",answer:"fake",why:"혈액은 산소량에 따라 밝기 차이가 있지만 파란색이 아닙니다."},
+ {text:"식물은 광합성을 통해 빛에너지를 화학에너지로 바꾼다.",answer:"real",why:"광합성은 빛에너지를 이용해 유기물을 만드는 과정입니다."},
+ {text:"선인장은 물을 전혀 필요로 하지 않는다.",answer:"fake",why:"선인장도 살아가기 위해 물이 필요하지만 건조한 환경에 적응했습니다."},
+ {text:"모든 세균은 사람에게 해롭다.",answer:"fake",why:"많은 세균은 무해하거나 소화 등 생명 활동에 도움을 줍니다."},
+ {text:"백신은 면역계가 특정 병원체에 대응하도록 준비시키는 데 도움을 준다.",answer:"real",why:"백신은 면역 반응을 유도해 감염이나 중증 위험을 줄이는 데 도움을 줍니다."},
+ {text:"항생제를 처방받은 경우에도 증상이 나아지면 임의로 복용을 중단해도 된다.",answer:"fake",why:"복용 방법은 처방 지침을 따라야 하며 임의로 변경하지 말고 의료진과 상의해야 합니다."},
+ {text:"사람의 지문은 사람마다 다를 수 있어 신원 확인에 활용된다.",answer:"real",why:"지문은 개인 식별에 활용되지만 실제 확인에는 적절한 절차가 필요합니다."},
+ {text:"인간은 뇌의 10%만 사용한다는 말은 과학적으로 확인된 사실이다.",answer:"fake",why:"뇌의 다양한 영역은 상황에 따라 활동하며 10%만 사용한다는 주장은 신화입니다."},
+ {text:"우주에서 우주비행사가 소리를 들을 때는 소리를 전달하는 매질이 필요하다.",answer:"real",why:"우주 공간의 진공에서는 소리가 직접 전파되지 않으며 통신 장치가 필요합니다."},
+ {text:"번개는 같은 장소에 두 번 칠 수 없다.",answer:"fake",why:"높은 건물이나 탑 등에는 번개가 여러 번 칠 수 있습니다."},
+ {text:"지진이 발생한 뒤에는 여진이 이어질 수 있다.",answer:"real",why:"큰 지진 이후 주변 단층이 조정되며 여진이 발생할 수 있습니다."},
+ {text:"지진이 오기 전에 모든 동물이 항상 정확히 예측한다.",answer:"fake",why:"동물 행동만으로 지진을 신뢰성 있게 예측할 수 있다는 근거는 없습니다."},
+ {text:"바닷물은 소금 등 용해된 물질 때문에 민물보다 짜다.",answer:"real",why:"바닷물에는 여러 염류가 녹아 있습니다."},
+ {text:"북극과 남극은 같은 대륙 위에 있다.",answer:"fake",why:"남극은 대륙이고 북극은 주로 바다 위의 해빙으로 이루어져 있습니다."},
+ {text:"지구의 대기는 지표면에서 멀어질수록 일반적으로 희박해진다.",answer:"real",why:"고도가 높아질수록 대기압과 공기 밀도가 대체로 낮아집니다."},
+ {text:"사막은 모두 낮과 밤의 기온이 항상 똑같다.",answer:"fake",why:"사막의 기온 변화는 지역과 계절, 습도 등에 따라 다릅니다."},
+ {text:"무지개는 빛이 물방울에서 굴절·반사·분산되며 나타날 수 있다.",answer:"real",why:"물방울이 햇빛을 분산시켜 여러 색으로 보이게 합니다."},
+ {text:"얼음은 항상 물보다 무겁기 때문에 가라앉는다.",answer:"fake",why:"같은 부피라면 얼음은 액체 물보다 밀도가 낮아 뜹니다."},
+ {text:"철은 습기와 산소가 있는 환경에서 녹슬 수 있다.",answer:"real",why:"철의 부식에는 산소와 물이 관여합니다."},
+ {text:"유리는 어떤 조건에서도 절대 깨지지 않는다.",answer:"fake",why:"유리는 충격이나 온도 변화 등으로 깨질 수 있습니다."},
+ {text:"소금은 물에 녹으면 사라져서 질량이 없어지는 것이다.",answer:"fake",why:"소금은 물에 녹아 분산되지만 물 전체의 질량에서 없어지지 않습니다."},
+ {text:"자석의 같은 극끼리는 서로 밀어낸다.",answer:"real",why:"자석은 같은 극끼리 밀고 다른 극끼리 끌어당깁니다."},
+ {text:"사람은 물 없이 몇 달 동안 건강하게 살 수 있다.",answer:"fake",why:"물은 생명 유지에 필수이며 심한 탈수는 위험합니다."},
+ {text:"운동 후 심박수가 높아지는 것은 몸이 산소와 에너지를 더 공급하려는 반응일 수 있다.",answer:"real",why:"운동 중에는 근육의 산소와 영양소 수요가 증가합니다."},
+ {text:"잠을 더 적게 잘수록 누구나 집중력이 좋아진다.",answer:"fake",why:"수면 부족은 집중력과 기억력에 악영향을 줄 수 있습니다."},
+ {text:"손을 비누와 흐르는 물로 씻으면 많은 병원체를 제거하는 데 도움이 된다.",answer:"real",why:"올바른 손 씻기는 감염 전파를 줄이는 방법입니다."},
+ {text:"천연 성분이라는 표시만 있으면 어떤 제품이든 안전하다.",answer:"fake",why:"천연 성분도 알레르기나 독성 등 위험을 일으킬 수 있습니다."},
+ {text:"식품의 유통기한과 보관 방법을 확인하는 것은 안전에 도움이 된다.",answer:"real",why:"표시된 보관 조건과 날짜를 확인하면 식품 안전 판단에 도움이 됩니다."},
+ {text:"모든 사람에게 같은 식단이 가장 건강하다.",answer:"fake",why:"건강한 식단은 나이, 활동량, 건강 상태 등 개인 조건에 따라 달라집니다."},
+ {text:"물은 모든 오염 물질을 끓이기만 하면 제거할 수 있다.",answer:"fake",why:"끓이기는 많은 병원체를 줄이지만 일부 화학 오염물질은 제거하지 못합니다."},
+ {text:"분리배출 기준은 지역과 품목에 따라 다를 수 있다.",answer:"real",why:"재활용 처리 체계가 달라 지자체와 제품 표시를 확인하는 것이 좋습니다."},
+ {text:"종이는 무한히 재활용할 수 있어 품질이 전혀 떨어지지 않는다.",answer:"fake",why:"종이 섬유는 재활용 과정에서 짧아져 재활용 횟수에 한계가 있습니다."},
+ {text:"태양광 발전은 햇빛을 이용해 전기를 생산한다.",answer:"real",why:"태양광 패널은 빛을 전기에너지로 변환합니다."},
+ {text:"풍력 발전기는 바람이 전혀 없어도 바람의 힘으로 계속 전기를 만든다.",answer:"fake",why:"풍력 발전은 적절한 바람이 필요합니다."},
+ {text:"재생에너지도 설치 장소와 방식에 따라 환경 영향을 줄 수 있다.",answer:"real",why:"모든 에너지원은 설계와 입지에 따라 환경 영향을 평가해야 합니다."},
+ {text:"기후와 날씨는 완전히 같은 뜻이다.",answer:"fake",why:"날씨는 단기 상태이고 기후는 장기간의 평균적 특성입니다."},
+ {text:"하루의 추운 날씨 하나만으로 지구 온난화가 없다고 결론 내릴 수 있다.",answer:"fake",why:"장기 기후 추세는 하루의 날씨만으로 판단할 수 없습니다."},
+ {text:"온실가스는 지구에서 나가는 열의 일부를 흡수해 온난화에 영향을 준다.",answer:"real",why:"온실가스는 지구의 복사 에너지 균형에 영향을 줍니다."},
+ {text:"오존층 파괴와 지구 온난화는 완전히 같은 현상이다.",answer:"fake",why:"두 현상은 원인과 작용이 다르지만 일부 물질이 두 문제 모두에 영향을 줄 수 있습니다."},
+ {text:"숲은 탄소를 저장하는 역할을 할 수 있다.",answer:"real",why:"나무와 토양은 탄소를 저장할 수 있습니다."},
+ {text:"나무 한 그루를 심으면 어떤 탄소 배출도 완전히 상쇄된다.",answer:"fake",why:"흡수량과 생존, 시간, 배출 규모 등을 따져야 하며 단순히 상쇄된다고 할 수 없습니다."},
+ {text:"지구 온난화가 진행되면 모든 지역의 기온이 매일 똑같이 오른다.",answer:"fake",why:"지역별 변화는 다르고 날씨의 일시적 변동도 계속됩니다."},
+ {text:"바다의 평균 수위는 얼음의 녹음과 바닷물의 열팽창 등의 영향을 받는다.",answer:"real",why:"육상 빙하의 손실과 따뜻해진 바닷물의 팽창은 해수면 상승 원인입니다."},
+ {text:"모든 홍수는 기후 변화 하나만으로 발생한다.",answer:"fake",why:"홍수에는 강수, 지형, 토지 이용, 배수 시설 등 다양한 요인이 작용합니다."},
+ {text:"공식 통계는 조사 대상과 조사 방법을 함께 확인하는 것이 좋다.",answer:"real",why:"표본과 정의, 조사 방법에 따라 통계의 해석이 달라질 수 있습니다."},
+ {text:"그래프의 세로축이 0에서 시작하지 않으면 차이가 실제보다 크게 보일 수 있다.",answer:"real",why:"축 범위를 좁히면 변화가 시각적으로 과장될 수 있습니다."},
+ {text:"그래프에 숫자가 적혀 있으면 출처를 확인할 필요가 없다.",answer:"fake",why:"숫자가 표시되어도 측정 방법과 출처를 확인해야 신뢰성을 평가할 수 있습니다."},
+ {text:"평균값 하나만 알면 자료 속 모든 사람의 상황을 알 수 있다.",answer:"fake",why:"평균은 분포와 개인 간 차이를 보여주지 않을 수 있습니다."},
+ {text:"상관관계가 발견되면 한 변수가 다른 변수의 원인이라고 확정된다.",answer:"fake",why:"상관관계만으로 인과관계를 증명할 수 없습니다."},
+ {text:"조사에서 응답하지 않은 사람들의 특성은 결과에 영향을 줄 수 있다.",answer:"real",why:"무응답 편향이 결과의 대표성에 영향을 줄 수 있습니다."},
+ {text:"설문 결과를 해석할 때는 응답자 수와 질문 문구를 확인하는 것이 좋다.",answer:"real",why:"표본 크기와 질문 방식은 응답 결과에 영향을 줄 수 있습니다."},
+ {text:"설문 응답자 10명만 조사하면 언제나 전국민의 의견을 정확히 알 수 있다.",answer:"fake",why:"작고 편향된 표본은 전체를 대표하지 못할 수 있습니다."},
+ {text:"통계에서 퍼센트와 퍼센트포인트는 항상 같은 뜻이다.",answer:"fake",why:"퍼센트 변화와 퍼센트포인트 차이는 서로 다른 개념입니다."},
+ {text:"기사 제목만 읽어도 본문 전체의 의미를 항상 정확히 알 수 있다.",answer:"fake",why:"제목은 내용을 축약하므로 본문과 맥락을 확인해야 합니다."},
+ {text:"인용문은 원문에서 앞뒤 문장을 확인하면 의미를 더 정확히 알 수 있다.",answer:"real",why:"인용 맥락은 발언의 의도를 이해하는 데 중요합니다."},
+ {text:"익명 계정의 주장은 모두 거짓이다.",answer:"fake",why:"익명이라는 이유만으로 참·거짓을 확정할 수는 없고 근거를 확인해야 합니다."},
+ {text:"유명인이 말한 내용이라도 근거를 확인할 필요가 있다.",answer:"real",why:"유명세는 주장의 정확성을 보장하지 않습니다."},
+ {text:"전문가의 의견을 인용할 때는 해당 분야의 전문성인지 확인하는 것이 좋다.",answer:"real",why:"전문성은 분야별로 다를 수 있습니다."},
+ {text:"반대 의견이 하나라도 있으면 과학적 합의는 존재할 수 없다.",answer:"fake",why:"과학적 합의는 모든 사람이 동의한다는 뜻이 아닙니다."},
+ {text:"한 연구의 결과는 언제나 모든 상황과 사람에게 그대로 적용된다.",answer:"fake",why:"연구 결과는 대상과 조건, 한계에 따라 적용 범위가 달라집니다."},
+ {text:"연구를 평가할 때는 연구 방법과 한계를 확인하는 것이 도움이 된다.",answer:"real",why:"방법과 한계를 알아야 결과를 적절히 해석할 수 있습니다."},
+ {text:"논문 제목에 '연구 결과'라고 적혀 있으면 동료 평가가 끝난 논문이다.",answer:"fake",why:"제목이나 표현만으로 심사 여부를 알 수 없습니다."},
+ {text:"보도자료와 독립적인 연구 결과는 같은 종류의 자료다.",answer:"fake",why:"보도자료는 기관의 발표이고 연구 논문 등과 목적과 검토 과정이 다를 수 있습니다."},
+ {text:"팩트체크 기사는 어떤 주장과 근거를 검토했는지 확인해야 한다.",answer:"real",why:"판정 이유와 원자료를 확인하면 검토의 타당성을 평가할 수 있습니다."},
+ {text:"팩트체크 사이트에 올라온 글은 출처를 볼 필요 없이 무조건 믿어도 된다.",answer:"fake",why:"팩트체크도 근거와 방법을 확인하며 읽는 것이 좋습니다."},
+ {text:"게시물이 수정되었다면 수정 시점과 내용을 확인하는 것이 도움이 된다.",answer:"real",why:"수정 이력은 정보가 어떻게 바뀌었는지 파악하게 해 줍니다."},
+ {text:"웹 주소에 자물쇠 표시가 있으면 그 사이트의 정보는 모두 사실이다.",answer:"fake",why:"HTTPS는 연결을 암호화하지만 사이트 내용의 진실성을 보증하지 않습니다."},
+ {text:"인터넷 주소의 철자가 공식 사이트와 비슷해도 가짜 사이트일 수 있다.",answer:"real",why:"유사한 도메인을 이용한 사칭 사이트가 있을 수 있습니다."},
+ {text:"공공기관을 사칭하는 메시지는 발신 주소와 공식 안내를 따로 확인해야 한다.",answer:"real",why:"발신자 표시만으로 진위를 판단하지 말고 공식 채널을 확인해야 합니다."},
+ {text:"급하게 돈을 보내라고 압박하는 메시지는 사기 여부를 확인할 필요가 있다.",answer:"real",why:"긴급성을 이용해 판단을 흐리는 것은 사기에서 자주 쓰이는 수법입니다."},
+ {text:"비밀번호를 여러 사이트에서 똑같이 쓰면 한 곳이 유출돼도 안전하다.",answer:"fake",why:"한 사이트에서 비밀번호가 유출되면 다른 계정도 위험해질 수 있습니다."},
+ {text:"이중 인증은 비밀번호만 사용하는 것보다 계정 보안을 강화할 수 있다.",answer:"real",why:"추가 인증 단계는 계정 탈취 위험을 줄이는 데 도움이 됩니다."},
+ {text:"공용 와이파이에 연결하면 모든 정보가 자동으로 공개된다.",answer:"fake",why:"위험은 네트워크와 보안 설정에 따라 다르지만 민감한 정보 보호에 주의해야 합니다."},
+ {text:"개인정보를 공개하기 전에 꼭 필요한 정보인지 생각하는 것이 좋다.",answer:"real",why:"불필요한 개인정보 공개를 줄이면 오용 위험을 낮출 수 있습니다."},
+ {text:"온라인에서 본 사람의 프로필 사진만으로 실제 신원을 확정할 수 있다.",answer:"fake",why:"사진은 도용되거나 다른 사람의 사진일 수 있습니다."},
+ {text:"딥페이크 영상은 실제 인물의 모습과 목소리를 합성해 만들 수 있다.",answer:"real",why:"AI 기술로 얼굴이나 음성을 합성한 영상·음성이 만들어질 수 있습니다."},
+ {text:"영상에 입 모양이 맞는 것처럼 보이면 조작이 절대 불가능하다.",answer:"fake",why:"정교한 합성은 눈으로만 판별하기 어려울 수 있습니다."},
+ {text:"이미지 역검색은 사진이 다른 곳에서 사용됐는지 확인하는 데 도움이 된다.",answer:"real",why:"역이미지 검색은 원본이나 과거 게시 사례를 찾는 데 활용할 수 있습니다."},
+ {text:"사진 속 그림자나 반사만 확인하면 합성 여부를 항상 확정할 수 있다.",answer:"fake",why:"시각적 단서 하나만으로 조작 여부를 확정하기는 어렵습니다."},
+ {text:"이미지의 메타데이터는 편집되거나 제거될 수 있다.",answer:"real",why:"메타데이터는 변경 가능하므로 단독 증거로 사용하기 어렵습니다."},
+ {text:"오래된 재난 사진이 새로운 사건의 사진으로 재사용될 수 있다.",answer:"real",why:"과거 사진을 현재 사건처럼 퍼뜨리는 오정보가 발생할 수 있습니다."},
+ {text:"영상의 일부만 잘라 공유하면 발언의 의미가 달라질 수 있다.",answer:"real",why:"편집 범위에 따라 발언의 맥락이 사라질 수 있습니다."},
+ {text:"자막이 붙어 있는 영상의 자막은 항상 원래 발언과 일치한다.",answer:"fake",why:"자막은 잘못 번역되거나 의도적으로 바뀔 수 있습니다."},
+ {text:"번역기를 사용한 결과는 원문과 뉘앙스가 달라질 수 있어 원문 확인이 도움이 된다.",answer:"real",why:"자동 번역은 문맥과 관용 표현을 놓칠 수 있습니다."},
+ {text:"AI가 제시한 참고문헌은 실제 존재하는지 확인하지 않아도 된다.",answer:"fake",why:"AI가 존재하지 않는 논문이나 링크를 제시할 수 있으므로 직접 확인해야 합니다."},
+ {text:"AI 답변에 출처 링크가 있으면 링크의 내용이 답변을 반드시 뒷받침한다.",answer:"fake",why:"링크가 실제로 열리는지와 해당 내용을 뒷받침하는지 확인해야 합니다."},
+ {text:"AI는 학습 자료의 오류나 편향을 답변에 반영할 수 있다.",answer:"real",why:"AI 출력은 학습 자료와 설계의 영향을 받을 수 있습니다."},
+ {text:"AI가 만든 이미지나 글은 언제나 사람이 만든 것과 쉽게 구분된다.",answer:"fake",why:"생성 결과가 정교하면 육안만으로 구분하기 어려울 수 있습니다."},
+ {text:"AI에게 같은 질문을 여러 번 하면 매번 정확히 같은 답을 한다.",answer:"fake",why:"설정과 문맥에 따라 답변이 달라질 수 있습니다."},
+ {text:"AI 답변을 중요한 결정에 사용할 때는 신뢰할 수 있는 자료로 재확인하는 것이 좋다.",answer:"real",why:"AI는 보조 도구이며 중요한 사실은 별도 검증이 필요합니다."},
+ {text:"AI가 계산한 결과도 식이나 다른 계산 방법으로 검산할 수 있다.",answer:"real",why:"검산은 계산 오류를 발견하는 데 도움이 됩니다."},
+ {text:"AI가 사과하면 이전에 제시한 정보가 자동으로 사실이 된다.",answer:"fake",why:"사과 표현은 사실 확인을 대신하지 않습니다."},
+ {text:"출처가 있는 주장이라도 출처가 그 주장을 실제로 말하는지 확인해야 한다.",answer:"real",why:"출처를 인용했더라도 맥락이나 내용이 왜곡될 수 있습니다."},
+ {text:"정보를 공유하기 전에 날짜·출처·원문·다른 보도를 확인하는 것이 좋다.",answer:"real",why:"여러 확인 방법을 함께 사용하면 오정보 확산을 줄이는 데 도움이 됩니다."},
+ {text:"내 생각과 일치하는 정보는 반대되는 정보보다 항상 더 정확하다.",answer:"fake",why:"자신의 믿음과 일치하는지보다 근거와 검증 가능성을 따져야 합니다."},
+ {text:"감정을 강하게 자극하는 글일수록 사실 확인 없이 즉시 공유하는 것이 좋다.",answer:"fake",why:"감정적인 표현은 빠른 공유를 유도할 수 있으므로 먼저 확인해야 합니다."},
+ {text:"풍자나 농담으로 만든 글이 사실 뉴스처럼 오해될 수 있다.",answer:"real",why:"맥락이 사라지면 풍자 콘텐츠가 실제 사건으로 받아들여질 수 있습니다."},
+ {text:"패러디 계정은 공식 계정과 구별되는지 확인하는 것이 좋다.",answer:"real",why:"계정 이름과 설명, 공식 연결 여부를 확인해야 합니다."},
+ {text:"뉴스 사진의 설명문이 사진 자체와 다른 사건을 가리킬 수 있다.",answer:"real",why:"사진과 캡션이 서로 맞는지 확인해야 합니다."},
+ {text:"기사에 전문가 이름이 적혀 있으면 실제로 인터뷰했는지 확인할 필요가 없다.",answer:"fake",why:"이름이나 발언이 허위로 인용됐을 가능성을 배제할 수 없습니다."},
+ {text:"여러 매체가 같은 보도를 했더라도 모두 같은 통신사 기사를 인용했을 수 있다.",answer:"real",why:"보도의 독립성을 판단하려면 원출처를 확인해야 합니다."},
+ {text:"익숙한 브랜드 로고가 있으면 메시지가 반드시 해당 회사에서 온 것이다.",answer:"fake",why:"로고는 복사할 수 있으므로 공식 발신 경로를 확인해야 합니다."},
+ {text:"온라인 투표 결과는 참여자가 누구였는지에 따라 전체 여론과 다를 수 있다.",answer:"real",why:"자발적 참여 방식은 표본 편향을 만들 수 있습니다."},
+ {text:"소수의 사례만 보고 모든 사람에게 같은 일이 일어난다고 결론 내릴 수 있다.",answer:"fake",why:"일부 사례만으로 전체를 일반화하면 성급한 결론이 될 수 있습니다."},
+ {text:"주장의 근거가 반증 가능하고 검증 가능하면 평가하기가 더 쉽다.",answer:"real",why:"확인 가능한 근거는 주장을 독립적으로 검토하는 데 도움이 됩니다."},
+ {text:"틀렸다는 증거가 나와도 최초 주장을 절대로 수정하지 않는 것이 과학적 태도다.",answer:"fake",why:"새로운 증거에 따라 주장을 수정하는 것은 과학적 탐구의 일부입니다."},
+ {text:"문제의 원인을 설명할 때 대안 설명도 고려하면 성급한 판단을 줄일 수 있다.",answer:"real",why:"다른 가능성을 검토하면 인과관계 오판을 줄이는 데 도움이 됩니다."},
+ {text:"정보의 신뢰성은 글꼴이나 디자인이 세련됐는지만으로 판단할 수 있다.",answer:"fake",why:"전문적으로 보이는 디자인도 거짓 정보에 사용될 수 있습니다."},
+ {text:"오탈자가 하나라도 있는 글은 반드시 가짜 정보다.",answer:"fake",why:"오탈자는 편집 실수일 수 있어 진위 여부를 단독으로 결정하지 못합니다."},
+ {text:"공식 기관의 자료도 발표 날짜와 적용 범위를 확인하는 것이 좋다.",answer:"real",why:"공식 자료도 특정 시점이나 상황을 대상으로 할 수 있습니다."},
+ {text:"정책이나 법률에 관한 정보는 최신 공식 자료를 확인하는 것이 좋다.",answer:"real",why:"법과 정책은 변경될 수 있으므로 최신 원문이 중요합니다."},
+ {text:"인터넷에서 찾은 통계의 단위가 다르면 직접 비교하기 어려울 수 있다.",answer:"real",why:"단위와 정의가 다르면 수치 비교가 잘못될 수 있습니다."},
+ {text:"숫자가 크면 언제나 중요한 영향이 크다고 할 수 있다.",answer:"fake",why:"비교 기준과 비율, 맥락을 함께 살펴야 의미를 해석할 수 있습니다."},
+ {text:"기준 연도나 비교 대상을 바꾸면 같은 자료도 다르게 보일 수 있다.",answer:"real",why:"비교 기준은 그래프와 통계 해석에 영향을 줍니다."},
+ {text:"자료를 인용할 때 원래 의미를 바꾸지 않고 정확하게 전달해야 한다.",answer:"real",why:"맥락을 왜곡하면 출처가 있어도 잘못된 주장이 될 수 있습니다."},
+ {text:"누군가의 주장을 반박할 때는 실제로 한 말을 확인하는 것이 좋다.",answer:"real",why:"상대의 주장을 왜곡하지 않고 원문에 근거해 평가해야 합니다."},
+ {text:"주장과 의견, 사실은 언제나 완전히 같은 개념이다.",answer:"fake",why:"사실은 증거로 확인할 수 있는 내용이고 의견은 평가나 선호를 포함할 수 있습니다."},
+ {text:"출처를 확인할 수 없는 캡처 화면만으로 사건의 전말을 확정하기는 어렵다.",answer:"real",why:"캡처는 맥락이 빠졌거나 편집되었을 수 있습니다."},
+ {text:"인터넷 게시물의 날짜는 다른 시간대나 재게시 여부 때문에 혼동될 수 있다.",answer:"real",why:"시간대와 재게시 표시를 확인하면 게시 시점을 더 정확히 이해할 수 있습니다."},
+ {text:"정보를 확인할 때 원문을 찾지 않고 요약문만 보는 것이 항상 더 정확하다.",answer:"fake",why:"요약문은 중요한 조건이나 예외를 생략할 수 있습니다."},
+ {text:"모든 온라인 리뷰는 실제 구매자가 작성한다.",answer:"fake",why:"리뷰는 광고, 조작, 또는 구매하지 않은 사람의 글일 수도 있습니다."},
+ {text:"별점 평균만으로 상품의 품질을 완벽하게 판단할 수 있다.",answer:"fake",why:"리뷰 수, 내용, 작성 시점, 사용 조건 등을 함께 봐야 합니다."},
+ {text:"협찬이나 광고 여부를 확인하면 리뷰의 맥락을 이해하는 데 도움이 된다.",answer:"real",why:"경제적 이해관계는 리뷰의 해석에 영향을 줄 수 있습니다."},
+ {text:"무료라는 광고 문구가 있으면 숨겨진 비용이 절대 없다.",answer:"fake",why:"조건이나 추가 요금이 있을 수 있으므로 약관을 확인해야 합니다."},
+ {text:"당첨됐다는 메시지를 받으면 링크를 누르기 전에 발신자를 확인해야 한다.",answer:"real",why:"가짜 경품 메시지는 개인정보나 결제를 유도할 수 있습니다."},
+ {text:"공식 고객센터 번호는 검색 광고에 나온 번호와 항상 같다.",answer:"fake",why:"사칭 광고가 있을 수 있으므로 공식 홈페이지의 연락처를 확인하는 것이 안전합니다."},
+ {text:"긴급 경고문이 있다고 해서 첨부 파일을 즉시 열어야 하는 것은 아니다.",answer:"real",why:"긴급성을 이용한 악성 파일 유포 가능성이 있어 확인이 필요합니다."},
+ {text:"파일 이름만 보고 안전한 파일인지 확정할 수 있다.",answer:"fake",why:"파일 이름은 바꿀 수 있으므로 출처와 보안 검사를 확인해야 합니다."},
+ {text:"소프트웨어 업데이트는 보안 취약점을 수정하는 데 도움이 될 수 있다.",answer:"real",why:"업데이트에는 보안 패치가 포함될 수 있습니다."},
+ {text:"공식 앱 스토어에 있는 앱은 권한을 확인하지 않아도 된다.",answer:"fake",why:"공식 스토어 앱도 요청 권한과 개인정보 처리 방식을 살펴보는 것이 좋습니다."},
+ {text:"앱이 기능과 관계없는 과도한 권한을 요구하면 주의할 필요가 있다.",answer:"real",why:"권한 요구가 목적에 적절한지 확인하는 것은 개인정보 보호에 도움이 됩니다."},
+ {text:"온라인에서 공개된 개인정보는 언제나 완전히 삭제할 수 있다.",answer:"fake",why:"복사본이나 저장된 기록이 남을 수 있어 완전한 삭제를 보장하기 어렵습니다."},
+ {text:"공유하기 전에 사진에 주소나 학교 이름이 드러나는지 확인하는 것이 좋다.",answer:"real",why:"이미지에 포함된 단서는 위치나 신상 정보를 노출할 수 있습니다."},
+ {text:"비밀번호를 친구와 공유하면 계정 보안이 더 강해진다.",answer:"fake",why:"비밀번호 공유는 계정 통제와 보안 위험을 높입니다."},
+ {text:"개인정보 유출이 의심되면 비밀번호 변경과 공식 안내 확인이 도움이 될 수 있다.",answer:"real",why:"계정 보호 조치를 신속히 취하고 공식 안내를 따르는 것이 좋습니다."},
+ {text:"모든 QR 코드는 안전한 웹사이트로 연결된다.",answer:"fake",why:"QR 코드가 악성 사이트나 사칭 사이트로 연결될 수도 있습니다."},
+ {text:"QR 코드를 스캔한 뒤 열린 주소를 확인하는 것은 도움이 된다.",answer:"real",why:"주소를 확인하면 의도하지 않은 사이트 방문을 줄일 수 있습니다."},
+ {text:"온라인에서 사실과 다른 정보를 발견하면 근거를 확인한 뒤 정정 정보를 공유할 수 있다.",answer:"real",why:"검증된 정정 정보를 공유하면 오정보 확산을 줄이는 데 도움이 됩니다."},
+ {text:"가짜 정보는 항상 문법이 엉망이고 쉽게 알아볼 수 있다.",answer:"fake",why:"오정보도 전문적으로 작성되거나 정교하게 편집될 수 있습니다."},
+ {text:"사실과 거짓이 섞인 게시물은 일부 사실만으로 전체가 정확하다고 볼 수 없다.",answer:"real",why:"각 주장과 맥락을 따로 검증해야 합니다."},
+ {text:"주장에 숫자나 과학 용어가 많이 들어가면 자동으로 사실이 된다.",answer:"fake",why:"전문 용어와 숫자는 근거의 정확성을 보장하지 않습니다."},
+ {text:"자료를 검증할 때는 주장에 맞는 증거뿐 아니라 반대 증거도 살펴보는 것이 좋다.",answer:"real",why:"반대 증거를 검토하면 확증 편향을 줄일 수 있습니다."},
+ {text:"확인되지 않은 소문을 사실처럼 전달하면 다른 사람에게 피해를 줄 수 있다.",answer:"real",why:"허위 정보는 평판, 안전, 의사결정에 피해를 줄 수 있습니다."},
+ {text:"누군가의 사진과 이름이 게시물에 있다는 사실만으로 그 사람이 실제로 말한 내용이라고 확정할 수 있다.",answer:"fake",why:"이름이나 사진이 도용되거나 발언이 조작됐을 수 있습니다."},
+ {text:"정보를 만든 사람의 목적과 이해관계를 살펴보면 신뢰성 평가에 도움이 된다.",answer:"real",why:"작성 목적과 이해관계는 정보의 표현과 선택에 영향을 줄 수 있습니다."},
+ {text:"정보를 많이 반복해서 읽으면 그 정보가 사실이라는 증거가 생긴다.",answer:"fake",why:"반복 노출은 익숙함을 만들 수 있지만 진실성을 증명하지는 않습니다."},
+ {text:"정확한 정보라도 오래되면 현재 상황을 설명하기에 부적절할 수 있다.",answer:"real",why:"정보의 최신성은 상황에 따라 중요합니다."},
+ {text:"한 출처가 틀렸다는 이유만으로 그 출처의 모든 말이 반드시 거짓이라고 결론 내릴 수 있다.",answer:"fake",why:"각 주장마다 근거를 따로 평가해야 합니다."},
+ {text:"신뢰성 높은 출처를 찾을 때는 전문성, 근거, 최신성, 투명성을 함께 고려할 수 있다.",answer:"real",why:"여러 기준을 종합하면 출처를 더 균형 있게 평가할 수 있습니다."},
+];
+const TERRITORY_COLORS=["#0e9f9a","#e45486","#6577e8","#e3a52f"];
+const TERRITORY_NAMES=["나","AI 1","AI 2","AI 3"];
+let territoryState=null,territoryTimer=null;
+function startTerritoryGame(){
+ stop();if(territoryTimer){clearTimeout(territoryTimer);territoryTimer=null;}
+ const count=settings.mode==="ai"?4:2,n=count===4?7:5,edges=[],edgeQuestions=[];
+ for(let r=0;r<=n;r++)for(let c=0;c<n;c++)edges.push({id:`h${r}_${c}`,r,c,dir:'h',owner:-1});
+ for(let r=0;r<n;r++)for(let c=0;c<=n;c++)edges.push({id:`v${r}_${c}`,r,c,dir:'v',owner:-1});
+ const facts=shuffle(TERRITORY_FACTS);edges.forEach((e,i)=>edgeQuestions.push({...facts[i]}));
+ territoryState={count,size:n,edges,edgeQuestions,boxes:Array(n*n).fill(-1),scores:Array(count).fill(0),selected:-1,question:null,finished:false,currentPlayer:0,aiStatus:Array(count).fill('대기 중'),aiTargets:Array(count).fill(null),aiQuestions:Array(count).fill(null),lastFeedback:'정답이면 선이 연결됩니다. 오답이면 차례가 상대에게 넘어갑니다.'};
+ show('territory');renderTerritory();
+}
+function boxEdges(r,c){const st=territoryState,n=st.size;return [st.edges.findIndex(e=>e.id===`h${r}_${c}`),st.edges.findIndex(e=>e.id===`h${r+1}_${c}`),st.edges.findIndex(e=>e.id===`v${r}_${c}`),st.edges.findIndex(e=>e.id===`v${r}_${c+1}`)];}
+function svgEl(tag,attrs={}){const el=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const [k,v] of Object.entries(attrs))el.setAttribute(k,v);return el;}
+function renderTerritory(){
+ const st=territoryState;if(!st)return;
+ const stats=$('territoryStats');stats.replaceChildren();
+ for(let p=0;p<st.count;p++){const el=document.createElement('div');el.className='territory-player'+(st.currentPlayer===p&&!st.finished?' active-player':'');el.style.setProperty('--player-color',TERRITORY_COLORS[p]);el.innerHTML=`<span class="player-dot"></span><b>${TERRITORY_NAMES[p]}</b><strong>${st.scores[p]}점</strong>`;stats.append(el);}
+ const ai=$('territoryAIQuestions');ai.replaceChildren();
+ for(let p=1;p<st.count;p++){const card=document.createElement('div');card.className='territory-ai-card';const q=st.aiQuestions[p];card.innerHTML=`<b><span>🤖 ${TERRITORY_NAMES[p]}</span><span>${st.currentPlayer===p&&!st.finished?'● 현재 차례':st.aiStatus[p]}</span></b><span>${q?q.text:(st.aiStatus[p]==='대기 중'?'내 차례가 끝나면 문제를 풉니다.':'아직 공개된 문제가 없습니다.')}</span>`;ai.append(card);}
+ const board=$('territoryBoard');board.replaceChildren();
+ const layout=board.closest('.territory-layout');layout.classList.toggle('four-player',st.count===4);
+ const n=st.size,step=500/n,pad=step*0.08,tile=step-pad*2,svg=svgEl('svg',{viewBox:'0 0 500 500',role:'img','aria-label':'도트 앤 박스 게임판'});
+ // Soft box tiles first.
+ for(let r=0;r<n;r++)for(let c=0;c<n;c++){const owner=st.boxes[r*n+c];const rect=svgEl('rect',{x:c*step+pad,y:r*step+pad,width:tile,height:tile,rx:Math.max(3,step*.09),fill:owner>=0?TERRITORY_COLORS[owner]+'24':'#f7f9fc',stroke:owner>=0?TERRITORY_COLORS[owner]+'70':'#e6ebf3','stroke-width':1});svg.append(rect);if(owner>=0){const t=svgEl('text',{x:c*step+step/2,y:r*step+step*.57,'text-anchor':'middle','font-size':String(Math.max(9,step*.17)),'font-weight':'800',fill:TERRITORY_COLORS[owner]});t.textContent=TERRITORY_NAMES[owner];svg.append(t);}}
+ // Draw clickable edge targets and visible lines.
+ st.edges.forEach((e,i)=>{const x1=e.dir==='h'?e.c*step:e.c*step,x2=e.dir==='h'?(e.c+1)*step:e.c*step,y1=e.dir==='h'?e.r*step:e.r*step,y2=e.dir==='h'?e.r*step:(e.r+1)*step;const color=e.owner>=0?TERRITORY_COLORS[e.owner]:'#d7e0eb';
+  const line=svgEl('line',{x1,y1,x2,y2,stroke:color,'stroke-width':e.owner>=0?Math.max(4,step*.08):Math.max(2.5,step*.04),'stroke-linecap':'round'});svg.append(line);
+  if(e.owner<0&&!st.finished&&st.currentPlayer===0&&!st.question){const hit=svgEl('line',{x1,y1,x2,y2,stroke:'transparent','stroke-width':22,'stroke-linecap':'round',tabindex:0,role:'button','aria-label':'선 선택'});hit.style.cursor='pointer';hit.addEventListener('click',()=>selectTerritory(i));hit.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();selectTerritory(i);}});svg.append(hit);}
+ });
+ for(let r=0;r<=n;r++)for(let c=0;c<=n;c++)svg.append(svgEl('circle',{cx:c*step,cy:r*step,r:Math.max(3.5,step*.06),fill:'#24364f',stroke:'#fff','stroke-width':2}));
+ board.append(svg);
+ $('territoryTurn').textContent=st.finished?'게임 종료!':st.currentPlayer===0?(st.question?'자료를 읽고 진짜인지 가짜인지 선택하세요.':'내 차례입니다. 선 하나를 선택하세요.'):`${TERRITORY_NAMES[st.currentPlayer]}의 차례입니다. AI가 문제를 푸는 중입니다.`;
+ $('territoryPrompt').textContent=st.question?st.question.text:(st.finished?'게임이 끝났습니다.':st.currentPlayer===0?'게임판의 빈 선을 선택하면 판별할 자료가 여기에 표시됩니다.':`${TERRITORY_NAMES[st.currentPlayer]}가 자료를 확인하고 있습니다…`);
+ $('territoryFeedback').className='case-feedback';$('territoryFeedback').textContent=st.lastFeedback;
+ $('realAnswer').disabled=st.finished||st.currentPlayer!==0||!st.question;$('fakeAnswer').disabled=st.finished||st.currentPlayer!==0||!st.question;
+ $('territoryHint').textContent=st.finished?'게임 종료! 점수가 가장 높은 플레이어가 승리합니다.':'턴제 게임 · 정답이면 선이 연결되고 칸을 완성하면 한 번 더 진행합니다. 오답이면 -1점, 차례는 유지됩니다.';
+}
+function selectTerritory(i){const st=territoryState;if(!st||st.finished||st.currentPlayer!==0||st.question||st.edges[i].owner>=0)return;st.selected=i;st.question=st.edgeQuestions[i];st.lastFeedback='이 자료는 진짜일까요, 가짜일까요?';renderTerritory();}
+function completeBoxes(player){const st=territoryState,n=st.size;let gained=0;for(let r=0;r<n;r++)for(let c=0;c<n;c++){const bi=r*n+c;if(st.boxes[bi]<0&&boxEdges(r,c).every(ei=>st.edges[ei].owner>=0)){st.boxes[bi]=player;st.scores[player]++;gained++;}}return gained;}
+function answerTerritory(answer){
+ const st=territoryState;if(!st||!st.question||st.selected<0||st.finished||st.currentPlayer!==0)return;
+ const q=st.question,idx=st.selected;let gained=0;
+ if(answer===q.answer){st.edges[idx].owner=0;gained=completeBoxes(0);playSfx('correct');st.lastFeedback='정답! 선이 연결됐습니다. '+(gained?`칸 ${gained}개를 차지했어요. 한 번 더! `:'')+q.why;}
+ else{st.scores[0]--;playSfx('wrong');st.lastFeedback='오답! -1점입니다. 차례는 넘어가지 않아요. 다른 선을 선택해 다시 도전하세요. '+q.why;}
+ st.question=null;st.selected=-1;
+ if(st.edges.every(e=>e.owner>=0)){finishTerritory();return;}
+ if(answer!=='real'&&answer!=='fake')return;
+ if(answer!==q.answer){renderTerritory();return;}
+ if(gained>0){renderTerritory();return;}
+ st.currentPlayer=(st.currentPlayer+1)%st.count;renderTerritory();if(st.currentPlayer!==0)runAITurn();
+}
+function runAITurn(){
+ const st=territoryState;if(!st||st.finished||st.currentPlayer===0)return;
+ const p=st.currentPlayer,options=st.edges.map((e,i)=>e.owner<0?i:-1).filter(i=>i>=0);
+ if(!options.length){finishTerritory();return;}
+ const pick=chooseAIEdge(options,p);st.aiTargets[p]=pick;st.aiQuestions[p]=st.edgeQuestions[pick];st.aiStatus[p]='문제 풀이 중';st.lastFeedback=`${TERRITORY_NAMES[p]}가 자료를 판별하고 있습니다…`;renderTerritory();
+ territoryTimer=setTimeout(()=>{
+  const live=territoryState;if(!live||live.finished||live.currentPlayer!==p)return;
+  const correct=Math.random()<(p===1?.92:.86),q=live.edgeQuestions[pick];let gained=0;
+  if(correct&&live.edges[pick].owner<0){live.edges[pick].owner=p;gained=completeBoxes(p);live.aiStatus[p]=gained?`칸 ${gained}개 획득!`:'정답';live.lastFeedback=`${TERRITORY_NAMES[p]} 정답 · 선 연결${gained?` · 칸 ${gained}개 획득`:''}. ${q.why}`;}
+  else{live.scores[p]--;live.aiStatus[p]='오답 · -1점';live.lastFeedback=`${TERRITORY_NAMES[p]} 오답 · -1점, 차례 유지. ${q.why}`;}
+  live.aiTargets[p]=null;live.aiQuestions[p]=null;
+  if(live.edges.every(e=>e.owner>=0)){finishTerritory();return;}
+  if(!correct){renderTerritory();territoryTimer=setTimeout(runAITurn,700);return;}
+  if(gained>0){renderTerritory();territoryTimer=setTimeout(runAITurn,700);return;}
+  live.currentPlayer=(p+1)%live.count;renderTerritory();if(live.currentPlayer!==0)territoryTimer=setTimeout(runAITurn,700);
+ },1200);
+}
+function chooseAIEdge(options,p){ // 완성 직전 칸이 있으면 우선 선택
+ const st=territoryState;
+ for(const i of options){st.edges[i].owner=p;const can=st.edges.reduce((a,e)=>a+(e.owner>=0?1:0),0);st.edges[i].owner=-1;for(let r=0;r<st.size;r++)for(let c=0;c<st.size;c++){if(st.boxes[r*st.size+c]<0&&boxEdges(r,c).filter(ei=>st.edges[ei].owner>=0).length===3&&boxEdges(r,c).includes(i))return i;}}
+ return options[Math.floor(Math.random()*options.length)];
+}
+function checkTerritoryEnd(){const st=territoryState;if(!st||st.finished)return;if(st.edges.every(e=>e.owner>=0))finishTerritory();}
+function finishTerritory(){const st=territoryState;if(!st||st.finished)return;st.finished=true;if(territoryTimer){clearTimeout(territoryTimer);territoryTimer=null;}const max=Math.max(...st.scores),w=st.scores.map((v,i)=>v===max?TERRITORY_NAMES[i]:null).filter(Boolean);st.lastFeedback=`승리: ${w.join(', ')} · 최종 점수 ${max}점입니다.`;renderTerritory();}
+$('realAnswer').addEventListener('click',()=>answerTerritory('real'));$('fakeAnswer').addEventListener('click',()=>answerTerritory('fake'));
+$('territoryHome').addEventListener('click',()=>{if(territoryTimer){clearTimeout(territoryTimer);territoryTimer=null;}territoryState=null;show('home');});
+document.addEventListener('keydown',e=>{if(!$('territory').classList.contains('active')||e.repeat)return;if(e.key==='1')answerTerritory('real');if(e.key==='2')answerTerritory('fake');});
+
 buttons.forEach((b,i)=>b.addEventListener("click",()=>choose(i)));
 document.addEventListener("keydown",e=>{if(!$("game").classList.contains("active")||e.repeat)return;if(e.key==="1"||e.key.toLowerCase()==="a")choose(0);if(e.key==="2"||e.key.toLowerCase()==="l")choose(1);});
-function openRules(){ $("rulesOverlay").hidden=false; }
-function closeRules(){ $("rulesOverlay").hidden=true; }
+let pendingGameStart=false;
+function rulesMarkup(topic){
+ const fake=topic==="가짜 판별";
+ if(fake) return `<div id="posterTitle" class="poster-title">FAKE CHECK · 도트 앤 박스</div>
+ <div class="poster-section">게임 목표</div><p class="poster-rule">자료를 읽고 진짜인지 가짜인지 판별해 선을 이어 보세요.</p>
+ <div class="poster-section">진행 방법</div><p class="poster-rule">1. 내 차례에 게임판의 빈 선 하나를 선택합니다.</p><p class="poster-note">2. 자료를 읽고 <b>1️⃣ 진짜</b> 또는 <b>2️⃣ 가짜</b>를 선택합니다.</p><p class="poster-note">3. 정답이면 선이 연결되고, 오답이면 -1점이 됩니다. 차례는 유지됩니다.</p><p class="poster-note">4. 네 변을 모두 연결해 칸을 완성하면 그 칸을 차지하고 한 번 더 진행합니다.</p><p class="poster-note">5. 게임이 끝났을 때 가장 많은 칸을 차지한 플레이어가 승리합니다.</p>
+ <div class="poster-section">조작 방법</div><p class="poster-note">마우스로 선과 답을 선택하거나 키보드 1(진짜), 2(가짜)를 누르세요.</p>
+ <div class="poster-actions"><button id="closeRules" class="primary" type="button">확인하고 ${pendingGameStart?'게임 시작':'닫기'}</button></div>`;
+ return `<div id="posterTitle" class="poster-title">ACID RAIN · ${topic} 게임 방법</div>
+ <div class="poster-section">게임 목표</div><p class="poster-rule">위에서 내려오는 두 선택지 중 정답을 골라 살아남으세요.</p>
+ <div class="poster-section">진행 방법</div><p class="poster-rule">1. 선택지가 바닥에 닿기 전에 정답을 선택합니다.</p><p class="poster-note">2. 싱글 모드는 생명 3개로 시작하며, 오답이나 시간 초과 시 생명이 줄어듭니다.</p><p class="poster-note">3. AI 대전은 먼저 100점 이상을 달성하면 승리합니다. 정답은 +10점, 오답이나 시간 초과는 -10점입니다.</p><p class="poster-note">4. 진행할수록 판단 시간이 짧아집니다.</p>
+ <div class="poster-section">조작 방법</div><p class="poster-note">마우스로 선택지를 누르거나 키보드 1/A(왼쪽), 2/L(오른쪽)를 누르세요.</p>
+ <div class="poster-actions"><button id="closeRules" class="primary" type="button">확인하고 ${pendingGameStart?'게임 시작':'닫기'}</button></div>`;
+}
+function openRules(){pendingGameStart=false;$("rulesOverlay").querySelector('.rules-poster').innerHTML=rulesMarkup(settings.topic);$("rulesOverlay").hidden=false;$("closeRules").addEventListener('click',closeRules,{once:true});}
+function startGame(){pendingGameStart=true;$("rulesOverlay").querySelector('.rules-poster').innerHTML=rulesMarkup(settings.topic);$("rulesOverlay").hidden=false;$("closeRules").addEventListener('click',closeRules,{once:true});}
+function closeRules(){const launch=pendingGameStart;pendingGameStart=false;$("rulesOverlay").hidden=true;if(launch)launchGame();}
 $("openRules").addEventListener("click",openRules);
-$("closeRules").addEventListener("click",closeRules);
 $("rulesOverlay").addEventListener("click",e=>{if(e.target===$("rulesOverlay"))closeRules();});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("rulesOverlay").hidden)closeRules();});
 $("start").addEventListener("click",startGame);$("retry").addEventListener("click",startGame);$("quit").addEventListener("click",()=>endGame("GAME ENDED","게임을 종료했습니다."));$("homeBtn").addEventListener("click",()=>{if(game)game.running=false;stop();show("home");});
 console.table(Object.entries(BANK).map(([topic,items])=>({topic,count:items.length})));
+</script>
+
+<div id="fontSizeControl" aria-label="글씨 크기 조절">
+  <span class="font-size-label">글씨 크기 <b id="fontSizeValue">100%</b></span>
+  <button type="button" id="fontSmaller" aria-label="글씨 작게">A−</button>
+  <button type="button" id="fontReset" aria-label="글씨 크기 초기화">기본</button>
+  <button type="button" id="fontLarger" aria-label="글씨 크게">A＋</button>
+</div>
+
+<script>
+
+// 게임 내 글씨 크기 조절 (동적으로 생성되는 오답 노트 등에도 적용)
+(function(){
+  const minScale = 0.8, maxScale = 1.5, step = 0.1;
+  let scale = 1;
+  const baseSizes = new WeakMap();
+
+  function scaleElement(el){
+    if (!(el instanceof HTMLElement) || el.closest('#fontSizeControl')) return;
+    if (!baseSizes.has(el)) {
+      const computed = window.getComputedStyle(el).fontSize;
+      const base = parseFloat(computed);
+      if (Number.isFinite(base) && base > 0) baseSizes.set(el, base);
+    }
+    const base = baseSizes.get(el);
+    if (base) el.style.setProperty('font-size', (base * scale) + 'px', 'important');
+  }
+
+  function applyScale(){
+    document.querySelectorAll('body *').forEach(scaleElement);
+    const value = document.getElementById('fontSizeValue');
+    if (value) value.textContent = Math.round(scale * 100) + '%';
+    document.documentElement.style.setProperty('--game-font-scale', scale);
+  }
+
+  document.getElementById('fontSmaller').addEventListener('click', function(){
+    scale = Math.max(minScale, Math.round((scale - step) * 10) / 10);
+    applyScale();
+  });
+  document.getElementById('fontLarger').addEventListener('click', function(){
+    scale = Math.min(maxScale, Math.round((scale + step) * 10) / 10);
+    applyScale();
+  });
+  document.getElementById('fontReset').addEventListener('click', function(){
+    scale = 1;
+    applyScale();
+  });
+
+  const observer = new MutationObserver(function(records){
+    for (const record of records) {
+      for (const node of record.addedNodes) {
+        if (node.nodeType === 1) {
+          scaleElement(node);
+          node.querySelectorAll?.('*').forEach(scaleElement);
+        }
+      }
+    }
+  });
+  observer.observe(document.body, {childList:true, subtree:true});
+  applyScale();
+})();
+
 </script>
 </body>
 </html>
