@@ -10,9 +10,9 @@
 body{margin:0;background:radial-gradient(ellipse at top,#ffffff,#e8f2ff 70%);color:#20324b;font-family:Arial,"Malgun Gothic",sans-serif}
 button{font:inherit;cursor:pointer}button:disabled{cursor:default}
 .app{max-width:900px;margin:auto;padding:16px}
-header{display:flex;justify-content:space-between;align-items:center;padding:12px 0 20px;border-bottom:1px solid var(--line)}
-.logo{font-size:22px;font-weight:900;letter-spacing:3px;color:var(--cyan)}
-.logo small{display:block;font-size:9px;color:#617895;letter-spacing:2px;margin-top:5px}
+header{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:12px 0 20px;border-bottom:1px solid var(--line)}
+.logo{flex:1;min-width:0;display:flex;align-items:baseline;gap:clamp(8px,2vw,22px);white-space:nowrap;font-size:clamp(30px,5vw,48px);font-weight:900;letter-spacing:clamp(1px,.35vw,4px);color:var(--cyan);line-height:1.1}
+.logo small{display:inline;font-size:clamp(16px,2.5vw,25px);color:#617895;letter-spacing:clamp(1px,.25vw,3px);margin:0}
 .screen{display:none}.screen.active{display:block}
 /* 시작 시 표시되는 규칙 안내 포스터 */
 .rules-overlay{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(10,14,20,.88)}
@@ -22,7 +22,13 @@ header{display:flex;justify-content:space-between;align-items:center;padding:12p
 .poster-section{color:#007f73;font-size:22px;margin:22px 0 10px}
 .poster-rule{font-size:clamp(13px,2.5vw,17px);font-weight:700;line-height:1.8;margin:10px 0;color:#20324b}
 .poster-note{font-size:12px;color:#647994;line-height:1.7;margin:3px 0 12px}.poster-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:28px}.poster-actions button{min-width:135px}
-.rules-button{padding:8px 11px;border:1px solid var(--line);border-radius:8px;background:#e7effb;color:#20324b;font-weight:700}
+.rules-button{padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#e7effb;color:#20324b;font-weight:700}
+.menu-wrap{position:relative}
+.menu-toggle{width:48px;height:44px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;border:1px solid var(--line);border-radius:10px;background:#fff;box-shadow:0 3px 10px #20324b12}
+.menu-toggle span{display:block;width:23px;height:3px;background:#20324b;border-radius:3px}
+.menu-dropdown{position:absolute;right:0;top:52px;z-index:1000;width:190px;padding:10px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 30px #20324b25;display:grid;gap:8px}
+.menu-dropdown[hidden]{display:none}
+.menu-dropdown button{width:100%;text-align:left;padding:11px 12px;border:1px solid var(--line);border-radius:8px;background:#edf4ff;color:#20324b;font-weight:700}
 h1{font-size:clamp(28px,6vw,44px);line-height:1.35}h2{font-size:20px}
 .muted{font-size:13px;color:#647994;line-height:1.8}
 .panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;margin:18px 0}
@@ -30,13 +36,31 @@ h1{font-size:clamp(28px,6vw,44px);line-height:1.35}h2{font-size:20px}
 .label{display:block;color:#647994;font-size:12px;margin-bottom:10px}
 .choices{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.choices.two{grid-template-columns:repeat(2,1fr)}
 .choice{padding:12px 5px;border-radius:9px;border:1px solid var(--line);background:#edf4ff;color:#20324b;font-size:12px}
-/* Larger topic cards: selecting one immediately advances to mode selection. */
-#topics{grid-template-columns:1fr;gap:12px}
-#topics .choice{min-height:88px;padding:22px 18px;font-size:clamp(18px,3.5vw,24px);font-weight:900;text-align:left;border-radius:14px;display:flex;align-items:center;justify-content:space-between}
-#topics .choice::after{content:"→";font-size:24px;color:var(--cyan)}
-#topics .choice.selected{box-shadow:0 0 0 2px #00a99a22}
-@media(max-width:600px){#topics .choice{min-height:76px;padding:18px 15px}}
-.choice.selected{border-color:var(--cyan);background:#d8f8f0;color:#007f73}
+.choice.selected{border:2px solid var(--cyan);background:#d9f7f4;color:#075e58;box-shadow:0 0 0 3px #00a99a25;font-weight:900;position:relative}
+#modeScreen .choice.selected::after{content:"✓ 선택됨";display:block;font-size:13px;margin-top:8px;color:#087f75}
+#modeScreen .choice{min-height:100px;font-size:22px;font-weight:800}
+/* Large colorful topic cards inspired by the requested reference. */
+#home .panel{background:transparent;border:0;padding:0;margin:22px 0}
+#home .label{font-size:clamp(18px,2.2vw,26px);font-weight:900;color:#20324b;margin:0 0 18px}
+#topics{grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.8vw,22px)}
+#topics .choice{min-height:290px;padding:clamp(20px,2.5vw,32px);font-size:clamp(20px,2.4vw,30px);font-weight:900;text-align:left;border:0;border-radius:28px;color:white;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:12px;box-shadow:0 12px 20px #1c355322;transition:transform .16s,filter .16s;white-space:normal}
+#topics .choice:hover{transform:translateY(-3px);filter:brightness(1.04)}
+#topics .choice::before{font-size:clamp(42px,4.2vw,58px);line-height:1.25;margin-bottom:2px}
+#topics .choice:nth-child(1){background:linear-gradient(135deg,#4d8cf4,#2e63c9)}
+#topics .choice:nth-child(1)::before{content:"📖"}
+#topics .choice:nth-child(1)::after{content:"헷갈리는 낱말 바로잡기\A 산성비 퀴즈"}
+#topics .choice:nth-child(2){background:linear-gradient(135deg,#f05d9d,#d53280)}
+#topics .choice:nth-child(2)::before{content:"🔎"}
+#topics .choice:nth-child(2)::after{content:"진짜·가짜 맞히고 땅 차지\A 땅따먹기"}
+#topics .choice:nth-child(3){background:linear-gradient(135deg,#10b9aa,#00988c)}
+#topics .choice:nth-child(3)::before{content:"🤖"}
+#topics .choice:nth-child(3)::after{content:"AI 앞에서 책임 있는 선택\A 산성비 퀴즈"}
+#topics .choice::after{white-space:pre-line;font-size:clamp(14px,1.7vw,20px);font-weight:500;line-height:1.55;margin-top:0}
+#topics .choice.selected{border:0;color:white;box-shadow:0 12px 20px #1c355322;font-weight:900}
+#topics .choice:nth-child(1).selected{background:linear-gradient(135deg,#4d8cf4,#2e63c9)}
+#topics .choice:nth-child(2).selected{background:linear-gradient(135deg,#f05d9d,#d53280)}
+#topics .choice:nth-child(3).selected{background:linear-gradient(135deg,#10b9aa,#00988c)}
+@media(max-width:700px){#topics{grid-template-columns:1fr}#topics .choice{min-height:190px;padding:24px;border-radius:20px}#topics .choice::before{font-size:42px}}
 .primary{padding:14px 20px;background:var(--cyan);border:0;border-radius:9px;color:#ffffff;font-weight:900}
 .secondary{padding:11px 15px;background:#e7effb;color:#20324b;border:1px solid var(--line);border-radius:9px}
 .row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
@@ -48,13 +72,13 @@ h1{font-size:clamp(28px,6vw,44px);line-height:1.35}h2{font-size:20px}
 .stat span{display:block;font-size:11px;color:#647994;margin-bottom:7px}.stat strong{font-size:20px}
 .battle{display:none;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}.battle.show{display:grid}
 .bcard{padding:12px;background:var(--panel);border:1px solid var(--line);border-radius:10px;font-size:12px}.bcard strong{float:right;color:var(--cyan);font-size:17px}.bcard.ai strong{color:var(--pink)}
-.arena{height:475px;position:relative;overflow:hidden;border:1px solid #b9cce6;border-radius:14px;background:linear-gradient(#f8fcff,#eaf3ff 85%,#fff0f7)}
-.arena:before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(#34486035 1px,transparent 1px),linear-gradient(90deg,#34486035 1px,transparent 1px);background-size:28px 28px}
-.question-area{position:absolute;top:16px;left:12px;right:12px;text-align:center;z-index:2}
+.arena{height:475px;position:relative;overflow:hidden;border:1px solid #cbd9ea;border-radius:14px;background:#f4f8ff}
+.arena:before{content:none}
+.question-area{position:absolute;top:8px;left:12px;right:12px;text-align:center;z-index:2}
 .topic{display:inline-block;color:var(--cyan);border:1px solid #315e62;border-radius:20px;padding:6px 10px;font-size:10px;letter-spacing:2px}
-#question{font-size:clamp(16px,3.5vw,23px);font-weight:bold;line-height:1.5;margin:12px auto 8px;max-width:750px}
+#question{font-size:clamp(16px,3.5vw,23px);font-weight:bold;line-height:1.45;margin:12px auto 8px;max-width:750px;padding:14px 20px;background:#fff;color:#20324b;border:1px solid #cbd9ea;border-radius:12px;box-shadow:0 3px 12px #20324b12;white-space:normal;overflow-wrap:break-word;word-break:normal;min-width:0}
 #subquestion{font-size:11px;color:#647994}
-.lanes{position:absolute;top:155px;bottom:24px;left:0;right:0;display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 12px}
+.lanes{position:absolute;top:205px;bottom:24px;left:0;right:0;display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 12px}
 .lane{position:relative;min-width:0;border-left:1px dashed #52617b55;border-right:1px dashed #52617b55}
 .lane-label{text-align:center;color:#647994;font-size:10px}
 .answer{position:absolute;top:30px;left:4%;width:92%;min-height:84px;padding:14px 7px;display:flex;align-items:center;justify-content:center;color:#17354a;background:#d9f7f4;border:1px solid var(--cyan);border-radius:11px;box-shadow:0 0 18px #00a99a25}
@@ -75,7 +99,7 @@ h1{font-size:clamp(28px,6vw,44px);line-height:1.35}h2{font-size:20px}
 .wrong{color:var(--pink)}.correct{color:var(--cyan)}.explain{border-top:1px solid var(--line);padding-top:8px;color:#526780}
 .empty{text-align:center;padding:20px;color:#647994}
 footer{text-align:center;padding:25px 0 8px;color:#7386a0;font-size:10px}
-@media(max-width:600px){.setup{grid-template-columns:1fr}.panel{padding:15px}.rules{grid-template-columns:1fr}.rule{padding:10px 12px}.arena{height:460px}.lanes{padding:0 6px;gap:6px}.answer{left:2%;width:96%;padding:13px 4px}.stats{gap:5px}.stat{padding:10px 6px}.stat strong{font-size:16px}.results{gap:5px}.result{padding:10px 5px}.result strong{font-size:17px}}
+@media(max-width:600px){.setup{grid-template-columns:1fr}.panel{padding:15px}.rules{grid-template-columns:1fr}.rule{padding:10px 12px}.arena{height:460px}.lanes{top:195px;padding:0 6px;gap:6px}.answer{left:2%;width:96%;padding:13px 4px}.stats{gap:5px}.stat{padding:10px 6px}.stat strong{font-size:16px}.results{gap:5px}.result{padding:10px 5px}.result strong{font-size:17px}}
 
 /* 전체 글씨 크기 확대: 게임 기능과 배치는 유지 */
 body{font-size:18px}
@@ -114,8 +138,8 @@ header .row span{font-size:14px !important}
 #home>p[style],#result>p[style]{font-size:14px !important}
 .controls .muted,.app .row .muted{font-size:14px !important}
 @media(max-width:600px){
-  .logo{font-size:24px}
-  .logo small{font-size:11px}
+  .logo{font-size:clamp(23px,6vw,32px);gap:7px;letter-spacing:1px}
+  .logo small{font-size:clamp(12px,3.2vw,17px);letter-spacing:1px}
   h2{font-size:23px}
   .choice{font-size:15px}
   .stat span{font-size:13px}
@@ -128,8 +152,8 @@ header .row span{font-size:14px !important}
 
 /* 글씨 크기 추가 확대 */
 body{font-size:20px}
-.logo{font-size:29px}
-.logo small{font-size:13px}
+.logo{font-size:clamp(30px,5vw,48px)}
+.logo small{font-size:clamp(16px,2.5vw,25px)}
 .poster-title{font-size:clamp(30px,5.8vw,44px)}
 .poster-section{font-size:30px}
 .poster-rule{font-size:clamp(19px,3.2vw,24px)}
@@ -163,8 +187,8 @@ header .row span{font-size:16px !important}
 #home>p[style],#result>p[style]{font-size:16px !important}
 .controls .muted,.app .row .muted{font-size:16px !important}
 @media(max-width:600px){
-  .logo{font-size:26px}
-  .logo small{font-size:12px}
+  .logo{font-size:clamp(23px,6vw,32px);gap:7px;letter-spacing:1px}
+  .logo small{font-size:clamp(12px,3.2vw,17px);letter-spacing:1px}
   h2{font-size:25px}
   .choice{font-size:17px}
   .stat span{font-size:14px}
@@ -175,28 +199,12 @@ header .row span{font-size:16px !important}
 }
 
 
-/* 게임 안에서 글씨 크기 조절 */
-#fontSizeControl{
-  position:fixed;right:16px;bottom:16px;z-index:10001;
-  display:flex;align-items:center;gap:7px;flex-wrap:wrap;
-  max-width:calc(100vw - 24px);padding:10px 12px;
-  border:1px solid rgba(100,220,255,.42);border-radius:14px;
-  background:rgba(10,18,30,.96);color:#f4f8ff;
-  box-shadow:0 8px 28px rgba(0,0,0,.35);font-size:14px;
-}
-#fontSizeControl .font-size-label{font-weight:700;margin-right:3px}
-#fontSizeControl button{
-  border:1px solid rgba(100,220,255,.5);border-radius:8px;
-  background:#17283b;color:#fff;padding:7px 10px;
-  font-size:15px;font-weight:800;cursor:pointer;min-width:38px;
-}
-#fontSizeControl button:hover{background:#244763}
-#fontSizeControl button:focus-visible{outline:2px solid #68e2ff;outline-offset:2px}
-@media(max-width:600px){
-  #fontSizeControl{right:8px;bottom:8px;gap:5px;padding:7px 8px}
-  #fontSizeControl button{padding:6px 8px}
-}
-
+/* 삼선 메뉴 안 글씨 크기 조절 */
+#fontSizeControl{display:grid;gap:8px;padding:7px 2px 2px;color:#20324b;font-size:14px}
+#fontSizeControl .font-size-label{font-weight:800}
+#fontSizeControl .font-size-buttons{display:flex;gap:5px}
+#fontSizeControl .font-size-buttons button{flex:1;min-width:0;text-align:center;padding:8px 5px;background:#edf4ff;color:#20324b;border:1px solid var(--line);border-radius:8px;font-size:14px;font-weight:800}
+#fontSizeControl .font-size-buttons button:hover{background:#dbeafe}
 
 /* 가짜 판별 추리 모드 */
 .case-kicker{color:var(--cyan);letter-spacing:3px;font-size:13px;font-weight:800;margin:8px 0}
@@ -309,6 +317,69 @@ header .row span{font-size:16px !important}
 .territory-board-legend{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;font-size:12px;color:#62718a;margin-top:10px}
 .territory-board-legend span{display:flex;align-items:center;gap:5px}.territory-board-legend i{display:inline-block;width:9px;height:9px;border-radius:50%}
 @media(max-width:760px){.territory-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.territory-ai-questions{grid-template-columns:1fr 1fr;gap:6px}.territory-layout{grid-template-columns:1fr}.territory-board-wrap{order:2}.territory-player-question{order:1}.territory-question h2{min-height:unset;font-size:clamp(21px,5vw,28px)}.territory-question,.territory-board-wrap{padding:12px}}
+
+/* Mobile-first touch layout */
+@media (max-width: 600px) {
+  body { -webkit-text-size-adjust: 100%; }
+  .app { width:100%; padding:10px; }
+  header { gap:8px; padding:8px 0 14px; align-items:center; }
+  .logo { min-width:0; white-space:normal; flex-wrap:wrap; gap:4px 8px; line-height:1.05; letter-spacing:1px; }
+  .logo small { white-space:normal; }
+  .menu-toggle { flex:0 0 44px; width:44px; height:44px; }
+  .panel { margin:12px 0; padding:13px; border-radius:12px; }
+  h1 { font-size:clamp(25px,7vw,34px); }
+  #home .panel { margin:14px 0; }
+  #topics { grid-template-columns:1fr; gap:12px; }
+  #topics .choice { min-height:130px; padding:18px; border-radius:18px; gap:7px; }
+  #topics .choice::before { font-size:38px; }
+  #topics .choice::after { font-size:15px; }
+  .choices { gap:8px; }
+  .choice { min-height:48px; padding:12px 8px; }
+  #modeScreen .choice { min-height:86px; font-size:clamp(17px,4.8vw,22px); }
+  .rules-poster { max-height:88dvh; padding:22px 18px; }
+  .poster-title { margin:6px auto 18px; font-size:clamp(21px,6vw,30px); }
+  .poster-section { font-size:22px; }
+  .poster-rule { font-size:16px; }
+  .poster-note { font-size:13px; }
+  .poster-actions button { min-height:44px; }
+  .stats { grid-template-columns:repeat(3,minmax(0,1fr)); gap:5px; margin:12px 0 8px; }
+  .stat { min-width:0; padding:9px 6px; }
+  .stat span { font-size:12px; }
+  .stat strong { font-size:18px; }
+  .battle { gap:6px; }
+  .bcard { padding:9px 8px; font-size:13px; }
+  .bcard strong { font-size:18px; }
+  .arena { height:min(58dvh,500px); min-height:340px; border-radius:12px; }
+  .question-area { top:8px; left:8px; right:8px; }
+  #question { font-size:clamp(17px,4.6vw,23px); line-height:1.45; margin:8px auto 6px; padding:12px 11px; max-width:100%; overflow-wrap:anywhere; }
+  #subquestion { font-size:13px; line-height:1.4; }
+  .lanes { top:clamp(175px,27vh,220px); bottom:18px; padding:0 5px; gap:5px; }
+  .lane-label { font-size:12px; }
+  .answer { top:28px; left:2%; width:96%; min-height:74px; padding:12px 5px; border-radius:10px; }
+  .answer .txt { font-size:clamp(14px,3.8vw,18px); line-height:1.4; }
+  .key { top:4px; left:5px; font-size:12px; }
+  .progress { margin-top:8px; }
+  .feedback { min-height:34px; padding:8px 0; font-size:15px; }
+  .controls { gap:8px; }
+  .controls button, .primary, .secondary { min-height:44px; }
+  .results { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .result { min-width:0; overflow-wrap:anywhere; }
+  .result strong { font-size:19px; }
+  .review { padding:11px; }
+  .review h3 { font-size:16px; }
+  .review p { font-size:14px; }
+  #fontSizeControl { left:8px; right:8px; bottom:8px; justify-content:center; max-width:none; }
+}
+@media (max-width:380px) {
+  .app { padding:8px; }
+  .logo { font-size:22px; }
+  .logo small { font-size:12px; }
+  #question { font-size:16px; }
+  .lanes { top:190px; }
+  .answer .txt { font-size:13px; }
+  .stat strong { font-size:16px; }
+}
+
 </style>
   <link rel="stylesheet" href="assets/enhancements.css">
 </head>
@@ -329,7 +400,7 @@ header .row span{font-size:16px !important}
   </div>
 </div>
 <div class="app">
-<header><div class="logo"><div>ACID RAIN<small>QUIZ BATTLE</small></div></div><div class="row"><button id="openRules" class="rules-button" type="button">📜 게임 규칙</button><button id="soundToggle" type="button" aria-pressed="true">🔊 사운드 ON</button><span style="color:var(--cyan);font-size:11px">● ONLINE</span></div></header>
+<header><div class="logo"><div>ACID RAIN<small>QUIZ BATTLE</small></div></div><div class="menu-wrap"><button class="menu-toggle" id="menuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span><span></span></button><div class="menu-dropdown" id="menuDropdown" hidden><button id="openRules" class="rules-button" type="button">📜 게임 규칙</button><button id="soundToggle" type="button" aria-pressed="true">🔊 사운드 ON</button><div id="fontSizeControl" aria-label="글씨 크기 조절"><span class="font-size-label">글씨 크기 <b id="fontSizeValue">100%</b></span><div class="font-size-buttons"><button type="button" id="fontSmaller" aria-label="글씨 작게">A−</button><button type="button" id="fontReset" aria-label="글씨 크기 초기화">기본</button><button type="button" id="fontLarger" aria-label="글씨 크게">A＋</button></div></div></div></div></header>
 <section id="home" class="screen active">
 <p style="color:var(--cyan);letter-spacing:3px;font-size:11px">KNOWLEDGE STORM</p>
 <h1>지식의 비를 피하라.<br><span style="color:var(--cyan)">정답을 먼저 잡아라.</span></h1>
@@ -338,8 +409,8 @@ header .row span{font-size:16px !important}
 
 
 <div class="panel">
-<label class="label">01 / 주제 선택</label>
-<div class="choices" id="topics"><button class="choice" data-v="문해력">문해력</button><button class="choice" data-v="가짜 판별">가짜 판별 · 도트 앤 박스</button><button class="choice" data-v="AI 윤리">AI 윤리</button></div>
+<label class="label">3가지 주제로 도전!</label>
+<div class="choices" id="topics"><button class="choice" data-v="문해력">문해력</button><button class="choice" data-v="가짜 판별">가짜 판별</button><button class="choice" data-v="AI 윤리">AI 윤리</button></div>
 
 </div>
 <section aria-labelledby="rulesTitle" style="margin-top:22px">
@@ -363,6 +434,7 @@ header .row span{font-size:16px !important}
 <div class="panel">
 <label class="label">02 / 모드 선택</label>
 <div class="choices two" id="modes"><button class="choice selected" data-v="single">싱글</button><button class="choice" data-v="ai">AI 대전</button></div>
+<p class="muted" id="modeSelectionStatus" aria-live="polite">현재 선택: 싱글</p>
 <div class="row" style="margin-top:22px"><button class="secondary" id="backToTopics">← 주제 선택</button><button class="primary" id="toNextSetup">다음 →</button></div>
 </div>
 </section>
@@ -568,8 +640,17 @@ for(const questions of Object.values(BANK)){
 
 const $=id=>document.getElementById(id);
 const buttons=[$("opt0"),$("opt1")];
+function fitQuestionLayout(){
+  const area=document.querySelector(".question-area"), lanes=document.querySelector(".lanes"), arena=document.querySelector(".arena");
+  if(!area||!lanes||!arena)return;
+  const desired=Math.ceil(area.offsetTop+area.offsetHeight+12);
+  const minTop=window.matchMedia("(max-width:600px)").matches?195:205;
+  lanes.style.top=Math.max(minTop,desired)+"px";
+} 
+window.addEventListener("resize",fitQuestionLayout);
 function playSfx(name){if(window.AcidAudio)window.AcidAudio.play(name);}
 $("soundToggle").addEventListener("click",()=>{const on=!window.AcidAudio.isEnabled();window.AcidAudio.setEnabled(on);$("soundToggle").textContent=on?"🔊 사운드 ON":"🔇 사운드 OFF";$("soundToggle").setAttribute("aria-pressed",String(on));if(on)playSfx("click");});
+const menuToggle=$("menuToggle"),menuDropdown=$("menuDropdown");menuToggle.addEventListener("click",()=>{const opening=menuDropdown.hidden;menuDropdown.hidden=!opening;menuToggle.setAttribute("aria-expanded",String(opening));});document.addEventListener("click",e=>{if(!e.target.closest(".menu-wrap")){menuDropdown.hidden=true;menuToggle.setAttribute("aria-expanded","false");}});$("openRules").addEventListener("click",()=>{menuDropdown.hidden=true;menuToggle.setAttribute("aria-expanded","false");});$("soundToggle").addEventListener("click",()=>{menuDropdown.hidden=true;menuToggle.setAttribute("aria-expanded","false");});
 const AI_LEVEL={easy:{aiDelay:4300,aiChance:.45},medium:{aiDelay:2600,aiChance:.70},hard:{aiDelay:1200,aiChance:.90}};
 let settings={topic:"문해력",mode:"single",level:"easy"};
 let game=null,pool=[],q=null,raf=0,timer=null,locked=false,aiAnswered=false,lastFrame=0;
@@ -578,7 +659,8 @@ function shuffle(arr){arr=[...arr];for(let i=arr.length-1;i>0;i--){const j=Math.
 function stop(){if(raf)cancelAnimationFrame(raf);raf=0;if(timer!==null)clearTimeout(timer);timer=null;}
 function bind(group,key){$(group).addEventListener("click",e=>{const b=e.target.closest("[data-v]");if(!b)return;settings[key]=b.dataset.v;$(group).querySelectorAll(".choice").forEach(x=>x.classList.toggle("selected",x===b));});}
 bind("topics","topic");bind("modes","mode");bind("levels","level");
-function updateSetupLabels(){const fake=settings.topic==="가짜 판별";$("modes").querySelector('[data-v="single"]').textContent=fake?"1대1 (나 vs AI)":"싱글";$("modes").querySelector('[data-v="ai"]').textContent=fake?"1대1대1대1":"AI 대전";$("chosenTopic").textContent=settings.topic;$("chosenSetup").textContent=settings.topic+" · "+(settings.mode==="ai"?(fake?"1대1대1대1":"AI 대전"):(fake?"1대1 (나 vs AI)":"싱글"));}
+function updateSetupLabels(){const fake=settings.topic==="가짜 판별";
+$("modeSelectionStatus").textContent="현재 선택: "+(settings.mode==="ai"?(fake?"1대1대1대1":"AI 대전"):(fake?"1대1 (나 vs AI)":"싱글"));$("modes").querySelector('[data-v="single"]').textContent=fake?"1대1 (나 vs AI)":"싱글";$("modes").querySelector('[data-v="ai"]').textContent=fake?"1대1대1대1":"AI 대전";$("chosenTopic").textContent=settings.topic;$("chosenSetup").textContent=settings.topic+" · "+(settings.mode==="ai"?(fake?"1대1대1대1":"AI 대전"):(fake?"1대1 (나 vs AI)":"싱글"));}
 updateSetupLabels();$("topics").addEventListener("click",()=>{updateSetupLabels();show("modeScreen");});$("modes").addEventListener("click",updateSetupLabels);
 function continueFromMode(){if(settings.mode==="ai"&&settings.topic!=="가짜 판별"){updateSetupLabels();show("levelScreen");}else{startGame();}}
 
@@ -588,7 +670,7 @@ $("backToModes").addEventListener("click",()=>show("modeScreen"));
 $("beginGame").addEventListener("click",startGame);
 function launchGame(){if(settings.topic==="가짜 판별"){playSfx("start");startTerritoryGame();return;}playSfx("start");stop();pool=shuffle(BANK[settings.topic]);game={stage:0,hp:3,score:0,aiScore:0,attempts:0,correct:0,wrong:[],used:0,running:true};$("battle").classList.toggle("show",settings.mode==="ai");$("healthLabel").textContent=settings.mode==="ai"?"BATTLE":"HEALTH";$("hearts").textContent=settings.mode==="ai"?"NO LIVES":"♥ ♥ ♥";$("topicName").textContent=settings.topic;show("game");nextQuestion();}
 function nextQuestion(){if(!game?.running)return;if(settings.mode==="single"&&game.hp<=0){endGame("GAME OVER","생명을 모두 잃었습니다.");return;}if(game.used>=pool.length){endGame("QUIZ COMPLETE","이 주제의 고정 문제를 모두 풀었습니다!");return;}
-const item=pool[game.used++],order=Math.random()<.5?[0,1]:[1,0];q={...item,options:order.map(i=>item.a[i]),correctPosition:order.indexOf(item.c),elapsed:0,duration:Math.max(2800,9500-Math.floor(game.stage/5)*700)};game.stage++;locked=false;aiAnswered=false;lastFrame=0;$("question").textContent=q.q;$("subquestion").textContent=settings.mode==="ai"?"먼저 100점에 도달하면 승리!":"정답을 선택하세요!";$("feedback").textContent="산성비가 내려옵니다...";$("feedback").style.color="var(--yellow)";$("progressFill").style.width="0%";buttons.forEach((b,i)=>{b.disabled=false;b.style.top="30px";b.style.opacity="1";b.querySelector(".txt").textContent=q.options[i];});updateStats();raf=requestAnimationFrame(tick);}
+const item=pool[game.used++],order=Math.random()<.5?[0,1]:[1,0];q={...item,options:order.map(i=>item.a[i]),correctPosition:order.indexOf(item.c),elapsed:0,duration:Math.max(2800,9500-Math.floor(game.stage/5)*700)};game.stage++;locked=false;aiAnswered=false;lastFrame=0;$("question").textContent=q.q;$("subquestion").textContent=settings.mode==="ai"?"먼저 100점에 도달하면 승리!":"정답을 선택하세요!";fitQuestionLayout();$("feedback").textContent="산성비가 내려옵니다...";$("feedback").style.color="var(--yellow)";$("progressFill").style.width="0%";buttons.forEach((b,i)=>{b.disabled=false;b.style.top="30px";b.style.opacity="1";b.querySelector(".txt").textContent=q.options[i];});updateStats();raf=requestAnimationFrame(tick);}
 function tick(now){if(!game?.running||locked)return;if(!lastFrame)lastFrame=now;const dt=Math.min((now-lastFrame)/1000,.05);lastFrame=now;q.elapsed+=dt*1000;const lane=buttons[0].parentElement.parentElement,maxY=Math.max(35,lane.clientHeight-110),progress=Math.min(1,q.elapsed/q.duration),y=30+progress*maxY;buttons.forEach(b=>b.style.top=y+"px");$("progressFill").style.width=(progress*100)+"%";
 if(settings.mode==="ai"&&!aiAnswered&&q.elapsed>=AI_LEVEL[settings.level].aiDelay){aiAnswered=true;if(Math.random()<AI_LEVEL[settings.level].aiChance){game.aiScore+=10;updateStats();if(game.aiScore>=100){endGame("AI WIN","AI가 먼저 100점에 도달했습니다!");return;}finishRound("AI");return;}else{finishRound("AI_WRONG");return;}}
 if(progress>=1){timeoutRound();return;}raf=requestAnimationFrame(tick);}
@@ -874,7 +956,7 @@ $('territoryHome').addEventListener('click',()=>{if(territoryTimer){clearTimeout
 document.addEventListener('keydown',e=>{if(!$('territory').classList.contains('active')||e.repeat)return;if(e.key==='1')answerTerritory('real');if(e.key==='2')answerTerritory('fake');});
 
 buttons.forEach((b,i)=>b.addEventListener("click",()=>choose(i)));
-document.addEventListener("keydown",e=>{if(!$("game").classList.contains("active")||e.repeat)return;if(e.key==="1"||e.key.toLowerCase()==="a")choose(0);if(e.key==="2"||e.key.toLowerCase()==="l")choose(1);});
+document.addEventListener("keydown",e=>{if(!$("game").classList.contains("active")||e.repeat)return;if(e.key==="1")choose(0);if(e.key==="2")choose(1);});
 let pendingGameStart=false;
 function rulesMarkup(topic){
  const fake=topic==="가짜 판별";
@@ -898,13 +980,6 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("rulesOverlay").
 $("retry").addEventListener("click",()=>{show("home");});$("quit").addEventListener("click",()=>endGame("GAME ENDED","게임을 종료했습니다."));$("homeBtn").addEventListener("click",()=>{if(game)game.running=false;stop();show("home");});
 console.table(Object.entries(BANK).map(([topic,items])=>({topic,count:items.length})));
 </script>
-
-<div id="fontSizeControl" aria-label="글씨 크기 조절">
-  <span class="font-size-label">글씨 크기 <b id="fontSizeValue">100%</b></span>
-  <button type="button" id="fontSmaller" aria-label="글씨 작게">A−</button>
-  <button type="button" id="fontReset" aria-label="글씨 크기 초기화">기본</button>
-  <button type="button" id="fontLarger" aria-label="글씨 크게">A＋</button>
-</div>
 
 <script>
 
